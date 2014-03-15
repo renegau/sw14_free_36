@@ -1,0 +1,13 @@
+
+- Java jdk 64bit
+  http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html
+  Install jdk-7u51-windows-x64.exe
+
+- Android SDK
+  ADT Bundle - http://developer.android.com/sdk/index.html
+  Unzip adt-bundle-windows-x86_64-20131030.zip to C:\Program Files\Google\
+  
+- Set environment variables 
+  PATH        ;C:\Program Files\Google\adt-bundle-windows-x86_64-20131030sdk\platform-tools;C:\Program Files\Google\adt-bundle-windows-x86_64-20131030\sdk\tools    
+  
+

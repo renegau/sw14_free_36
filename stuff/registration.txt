@@ -1,0 +1,53 @@
+===========================
+Registration Free Team Mode
+===========================
+
+https://docs.google.com/forms/d/1EibtqNnv3qdw2LHzkkX3RTFc9rl6ULrZSy8-T33DOtw/viewform?edit=ChMxNTM0MDU4NjYyNjg2MTY5MTg2ENLWkPnNm_LhCA
+
+
+- team leader
+
+  first name:				Rene
+  last name:				Gau
+  Matriculation number:		0230036
+  student email address:	rene.gau@student.tugraz.at
+  Gmail address:			renegau12@gmail.com
+  course:					Mobile Applications
+
+
+- app
+
+  name of the app:			Beachvolley Assist
+  short app descritpion:	
+  
+  The idea is to develop an app for supporting beachvolleyball referees or scoring assistents:
+    - Guide the referee before starting the game. Choosing
+    - beginning sides of the teams
+    - team that has the first serve
+    - the order of the players to serve
+  - shows the scorelines
+  - signals when the teams have to change the sides (every 7 points)
+  - signals technical time-outs (when the combined teams scores equals 21)
+  - signals end of technical/tactical time-outs (30 seconds)
+  - informs which player should perform the next serve 
+
+
+- second member
+
+  first name:				Manuel
+  last name:				Haid
+  Matriculation number:		1131404
+  student email address:	manuel.haid@student.tugraz.at
+  Gmail address:			manuel.haid@gmail.com
+  course:					Softwareentwicklung und Wissensmanagement
+
+
+- third member
+
+  first name:				Blaz
+  last name:				Kolar
+  Matriculation number:		1130778
+  student email address:	blaz.kolar@student.tugraz.at
+  Gmail address:			bl4z.k0l4r@gmail.com
+  course:					Softwareentwicklung und Wissensmanagement
+  

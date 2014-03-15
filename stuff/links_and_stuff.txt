@@ -1,0 +1,62 @@
+﻿===============
+Links and stuff
+===============
+
+
+- TWiki Site 
+
+  url:	http://www.ist.tugraz.at/software2014
+  
+
+
+- github accounts
+
+  url: https://github.com
+
+  Rene:			renegau (rene@gau.at)
+  Manuel:		Manu91  (manuel.haid@gmail.com)
+  Blaz:			Ringio73
+
+  repo name:	sw14_free_36
+  repo url:		https://github.com/renegau/sw14_free_36
+  
+  naming convention "sw14_free_xx". 
+  Add Patrick and Martin as collaborators, their github user names are patkoch and mwalzl
+
+  
+  
+- commit ID's
+ 
+  RG ... Rene Gau
+  MH ... Manuel Haid
+  BK ... Blaz Kolar
+
+  
+  
+- TeamID: 36  
+
+
+
+- Schedule Free Teams  
+
+  url: http://www.ist.tugraz.at/software2014/bin/view/Main/ScheduleFreeTeams
+
+  05-March-2014 	Start of the lecture
+  10-March-2014 	Deadline for registration to this lecture by TUGOnline (23:59)
+  12-March-2014 	Exam (compulsory attendance!)
+  14-March-2014 	Deadline for registration by Google Forms (23:59)
+  19-March-2014 	Exam Evaluation (compulsory attendance!)
+  02-April-2014 	Presentation of your Mockup (compulsory attendance!)
+  17-June-2014 		Deadline for uploading your application by Github (18:00)
+  18-June-2014 		Presentation of your applications and Final Exam (compulsory attendance!)
+  19-June-2014 		Start of "Abgabegespräche" - Oral Examination (compulsory attendance!)
+  27-June-2014 		End of "Abgabegespräche" - Oral Examination (compulsory attendance!) 
+
+
+  
+- Technologien
+
+  Android/Java mit Testfamework robotium
+  
+
+  
