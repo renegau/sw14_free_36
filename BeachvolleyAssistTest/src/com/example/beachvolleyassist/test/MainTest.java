@@ -73,4 +73,42 @@ public class MainTest extends ActivityInstrumentationTestCase2<MainActivity> {
 		
 		mySolo.getText("TEAM BLUE WIN THE GAME");
 	}
+	
+	public void testButtonCancel()
+	{
+		for(int red = 0; red < 5; red++)
+		{
+		  mySolo.clickOnView(mySolo.getView(R.id.buttonRed));
+		}
+		
+		for(int blue = 0; blue < 8; blue++)
+		{
+		  mySolo.clickOnView(mySolo.getView(R.id.buttonBlue));
+		}
+		
+		mySolo.clickOnView(mySolo.getView(R.id.buttonCancel));
+		
+		mySolo.getText("0");
+	}
+	
+	public void testButtonUndo()
+	{
+		for(int red = 0; red < 5; red++)
+		{
+		  mySolo.clickOnView(mySolo.getView(R.id.buttonRed));
+		}
+		
+		mySolo.clickOnView(mySolo.getView(R.id.buttonUndo));
+		
+		mySolo.getText("4");
+		
+		for(int blue = 0; blue < 8; blue++)
+		{
+		  mySolo.clickOnView(mySolo.getView(R.id.buttonBlue));
+		}
+		
+		mySolo.clickOnView(mySolo.getView(R.id.buttonUndo));
+		
+		mySolo.getText("7");
+	}
 }

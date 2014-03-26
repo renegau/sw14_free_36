@@ -12,9 +12,13 @@ public class MainActivity extends Activity implements OnClickListener {
 
 	private Button button_Red;
 	private Button button_Blue;
+	private Button button_Cancel;
+	private Button button_Undo;
 	
 	int counterRed = 0;
 	int counterBlue = 0;
+	boolean red = false;
+	boolean blue = false;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -23,9 +27,13 @@ public class MainActivity extends Activity implements OnClickListener {
 
 		this.button_Red = (Button) this.findViewById(R.id.buttonRed);
 		this.button_Blue = (Button) this.findViewById(R.id.buttonBlue);
-
+		this.button_Cancel = (Button) this.findViewById(R.id.buttonCancel);
+		this.button_Undo = (Button) this.findViewById(R.id.buttonUndo);
+		
 		this.button_Red.setOnClickListener(this);
 		this.button_Blue.setOnClickListener(this);
+		this.button_Cancel.setOnClickListener(this);
+		this.button_Undo.setOnClickListener(this);
 	}
 
 	@Override
@@ -46,6 +54,8 @@ public class MainActivity extends Activity implements OnClickListener {
 			this.counterRed += 1;
 			this.button_Red.setText(Integer.toString(counterRed));
 			
+			this.red = true;
+			
 			if(counterRed >= 21 && counterBlue < (counterRed - 1))
 			{
 				dlgAlert.setMessage("TEAM RED WIN THE GAME");
@@ -63,6 +73,8 @@ public class MainActivity extends Activity implements OnClickListener {
 			this.counterBlue += 1;
 			this.button_Blue.setText(Integer.toString(counterBlue));
 			
+			this.blue = true;
+			
 			if(counterBlue >= 21 && counterRed < (counterBlue - 1))
 			{
 				dlgAlert.setMessage("TEAM BLUE WIN THE GAME");
@@ -73,6 +85,35 @@ public class MainActivity extends Activity implements OnClickListener {
 				button_Red.setEnabled(false);
 				button_Blue.setEnabled(false);
 			}
-		} 
+		}
+		
+		else if (clicked.getId() == this.button_Cancel.getId())
+		{
+			button_Red.setEnabled(true);
+			button_Blue.setEnabled(true);
+			
+			this.counterBlue = 0;
+			this.counterRed = 0;
+			this.red = false;
+			this.blue = false;
+			this.button_Blue.setText(Integer.toString(counterBlue));
+			this.button_Red.setText(Integer.toString(counterRed));
+		}
+		
+		else if(clicked.getId() == this.button_Undo.getId())
+		{
+			if(red == true)
+			{
+				this.counterRed -= 1;
+				this.button_Red.setText(Integer.toString(counterRed));
+				this.red = false;
+			}
+			else if(blue == true)
+			{
+				this.counterBlue -= 1;
+				this.button_Blue.setText(Integer.toString(counterBlue));
+				this.blue = false;
+			}
+		}
 	}
 }
