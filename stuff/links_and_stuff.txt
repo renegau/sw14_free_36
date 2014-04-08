@@ -59,4 +59,7 @@ Links and stuff
   Android/Java mit Testfamework robotium
   
 
+- Time sheet
   
+  url: https://docs.google.com/spreadsheet/ccc?key=0Ap1Ri93zODWMdHJrZjFpOEpRMTVXeHJ6U2hNOUtpckE&usp=sharing#gid=2
+ 
