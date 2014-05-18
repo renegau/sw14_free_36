@@ -2,13 +2,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#58ACFA"
     android:paddingBottom="5dp"
     android:paddingLeft="5dp"
     android:paddingRight="5dp"
     android:paddingTop="5dp"
-    tools:context=".MainActivity" 
-
-    android:background="#6E6E6E">
+    tools:context=".MainActivity" >
     
 <LinearLayout
     android:id="@+id/LayoutRed"
@@ -33,14 +32,22 @@
         android:layout_width="fill_parent"
         android:layout_height="30dp"
         android:gravity="center"
-        android:text="Player #1" />
+        android:text="Player #1" 
+        android:textColor="#BDBDBD"/>
 
     <TextView
         android:id="@+id/textPlayer2Red"
         android:layout_width="fill_parent"
         android:layout_height="30dp"
         android:gravity="center"
-        android:text="Player #2" />
+        android:text="Player #2" 
+        android:textColor="#BDBDBD"/>
+
+    <RatingBar
+        android:id="@+id/ratingBar1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" 
+        android:isIndicator="true"/>
     
     <Button
         android:id="@+id/buttonTimeoutRed"
@@ -48,71 +55,40 @@
         android:layout_height="50dp"
         android:layout_marginBottom="10dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="0dp"
         android:text="TIMEOUT"
         android:textSize="20sp" />
+
+    <ImageView
+        android:id="@+id/viewTimeoutRed1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="-5dp"
+        android:src="@android:drawable/ic_media_pause" />
+    
+      <ImageView
+        android:id="@+id/viewTimeoutRed2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="-32dp"
+        android:src="@android:drawable/ic_media_pause" />
+        
+      <ImageView
+        android:id="@+id/viewTimeoutRed3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="110dp"
+        android:layout_marginTop="-32dp"
+        android:src="@android:drawable/ic_media_pause" />
 
     <Button
         android:id="@+id/buttonRed"
         android:layout_width="130dp"
         android:layout_height="150dp"
         android:layout_marginLeft="10dp"
-        android:layout_marginTop="50dp"
-        android:text="0"
-        android:textSize="80sp" />
-    
-</LinearLayout>
-
-<LinearLayout
-    android:id="@+id/LayoutBlue"
-    android:layout_width="150dp"
-    android:layout_height="400dp"
-    android:layout_marginTop="50dp"
-    android:layout_marginLeft="160dp"
-    android:orientation="vertical"
-    android:background="#040CFC"
-    android:layout_weight="10">
-        
-    <TextView
-        android:id="@+id/textBlue"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Team BLUE" 
-        android:textSize="25sp"
-        android:textStyle="bold"
-        android:textColor="#000000"
-        android:layout_marginLeft="8dp"/>
-    
-    <TextView
-        android:id="@+id/textPlayer1Blue"
-        android:layout_width="fill_parent"
-        android:layout_height="30dp"
-        android:gravity="center"
-        android:text="Player #1" />
-
-    <TextView
-        android:id="@+id/textPlayer2Blue"
-        android:layout_width="fill_parent"
-        android:layout_height="30dp"
-        android:gravity="center"
-        android:text="Player #2" />
-    
-    <Button
-        android:id="@+id/buttonTimeoutBlue"
-        android:layout_width="135dp"
-        android:layout_height="50dp"
-        android:layout_marginBottom="10dp"
-        android:layout_marginLeft="8dp"
         android:layout_marginTop="10dp"
-        android:text="TIMEOUT"
-        android:textSize="20sp" />
-
-    <Button
-        android:id="@+id/buttonBlue"
-        android:layout_width="130dp"
-        android:layout_height="150dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="50dp"
         android:text="0"
         android:textSize="80sp" />
     
@@ -133,5 +109,91 @@
     android:layout_alignParentLeft="true"
     android:layout_alignParentTop="true"
     android:text="Cancel" />
+
+<LinearLayout
+    android:id="@+id/LayoutBlue"
+    android:layout_width="150dp"
+    android:layout_height="400dp"
+    android:layout_alignParentBottom="true"
+    android:layout_alignParentRight="true"
+    android:layout_weight="10"
+    android:background="#040CFC"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/textBlue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:text="Team BLUE"
+        android:textColor="#000000"
+        android:textSize="25sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textPlayer1Blue"
+        android:layout_width="fill_parent"
+        android:layout_height="30dp"
+        android:gravity="center"
+        android:text="Player #1" 
+        android:textColor="#BDBDBD"/>
+
+    <TextView
+        android:id="@+id/textPlayer2Blue"
+        android:layout_width="fill_parent"
+        android:layout_height="30dp"
+        android:gravity="center"
+        android:text="Player #2" 
+        android:textColor="#BDBDBD"/>
+
+    <RatingBar
+        android:id="@+id/RatingBar01"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" 
+        android:isIndicator="true"/>
+
+    <Button
+        android:id="@+id/buttonTimeoutBlue"
+        android:layout_width="135dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="0dp"
+        android:text="TIMEOUT"
+        android:textSize="20sp" />
+    
+        <ImageView
+        android:id="@+id/viewTimeoutBlue1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="-5dp"
+        android:src="@android:drawable/ic_media_pause" />
+    
+      <ImageView
+        android:id="@+id/viewTimeoutBlue2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="-32dp"
+        android:src="@android:drawable/ic_media_pause" />
+        
+      <ImageView
+        android:id="@+id/viewTimeoutBlue3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="110dp"
+        android:layout_marginTop="-32dp"
+        android:src="@android:drawable/ic_media_pause" />
+
+    <Button
+        android:id="@+id/buttonBlue"
+        android:layout_width="130dp"
+        android:layout_height="150dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:text="0"
+        android:textSize="80sp" />
+</LinearLayout>
 
 </RelativeLayout>
