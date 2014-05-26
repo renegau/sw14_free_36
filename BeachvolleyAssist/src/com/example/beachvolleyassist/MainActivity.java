@@ -1,7 +1,10 @@
 package com.example.beachvolleyassist;
 
+import com.example.beachvolleyassist.R.layout;
+
 import android.os.Build;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.view.Menu;
@@ -29,10 +32,11 @@ public class MainActivity extends Activity implements OnClickListener {
 	boolean blue = false;
 
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
+	protected void onCreate(Bundle savedInstanceState) 
+	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.mainactivity);
-
+		
 		this.button_Red = (Button) this.findViewById(R.id.buttonRed);
 		this.button_Blue = (Button) this.findViewById(R.id.buttonBlue);
 		this.button_Cancel = (Button) this.findViewById(R.id.buttonCancel);
@@ -58,6 +62,7 @@ public class MainActivity extends Activity implements OnClickListener {
 		return true;
 	}
 
+	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
 	@Override
 	public void onClick(View view) 
 	{
@@ -81,7 +86,8 @@ public class MainActivity extends Activity implements OnClickListener {
 				button_Red.setEnabled(false);
 				button_Blue.setEnabled(false);
 			}
-			if(((counterRed + counterBlue) % 7) == 0)
+			
+			else if(((counterRed + counterBlue) % 7) == 0)
 			{
 				changeLayout();
 			}
@@ -95,16 +101,18 @@ public class MainActivity extends Activity implements OnClickListener {
 			this.blue = true;
 			
 			if(counterBlue >= 21 && counterRed < (counterBlue - 1))
-			{
+			{	
 				dlgAlert.setMessage("TEAM BLUE WIN THE GAME");
 				dlgAlert.setTitle("CONGRATULATION");
 				dlgAlert.setPositiveButton("OK", null);
+				dlgAlert.setInverseBackgroundForced(true);
 				dlgAlert.create().show();
 				
 				button_Red.setEnabled(false);
 				button_Blue.setEnabled(false);
 			}
-			if(((counterRed + counterBlue) % 7) == 0)
+			
+			else if(((counterRed + counterBlue) % 7) == 0)
 			{
 				changeLayout();
 			}
@@ -138,6 +146,16 @@ public class MainActivity extends Activity implements OnClickListener {
 				this.blue = false;
 			}
 		}
+		
+		else if(clicked.getId() == this.button_TimeoutRed.getId())
+		{
+			timeoutDialog();
+		}
+		
+		else if(clicked.getId() == this.button_TimeoutBlue.getId())
+		{
+           timeoutDialog();
+		}
 	}
 	
 	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
@@ -147,9 +165,8 @@ public class MainActivity extends Activity implements OnClickListener {
 	  
 	  dlgAlert.setMessage("CHANGE THE SIDES");
 	  dlgAlert.setPositiveButton("OK", null);
-	  dlgAlert.create().show();
-		
-	  float red_x = layout_red.getX();
+	  
+  	  float red_x = layout_red.getX();
 	  float red_y = layout_red.getY();
 	  float blue_x = layout_blue.getX();
 	  float blue_y = layout_blue.getY();
@@ -158,5 +175,33 @@ public class MainActivity extends Activity implements OnClickListener {
 	  layout_red.setY(blue_y);
 	  layout_blue.setX(red_x);
       layout_blue.setY(red_y);
+      
+	  dlgAlert.create().show();
+	}
+	
+	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
+	public void timeoutDialog()
+	{
+		final AlertDialog timoutDialog = new AlertDialog.Builder(this).create();
+		
+		final String space = "                 ";
+		timoutDialog.setTitle(space + "TIMEOUT");
+		timoutDialog.setMessage(space + "30 seconds left");
+		timoutDialog.show();
+
+		//findViewById(R.layout.mainactivity).setEnabled(true);
+		
+		new CountDownTimer(30000, 1000) 
+		{
+		    public void onTick(long milliSeconds) 
+		    {
+		       timoutDialog.setMessage((space + milliSeconds/1000) + " seconds left");
+		    }
+
+		    public void onFinish() 
+		    {
+		    	timoutDialog.cancel();
+		    }
+		}.start();
 	}
 }

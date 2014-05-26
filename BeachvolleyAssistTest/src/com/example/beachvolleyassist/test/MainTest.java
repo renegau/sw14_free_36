@@ -146,4 +146,18 @@ public class MainTest extends ActivityInstrumentationTestCase2<MainActivity> {
 		assertEquals(blue_x, new_red_x);
 		assertEquals(blue_y, new_red_y);
 	}
+	
+	public void testTimeoutRed()
+	{
+		mySolo.clickOnView(mySolo.getView(R.id.buttonTimeoutRed));
+		
+		mySolo.getText("30");
+	}
+	
+	public void testTimeoutBlue()
+	{
+		mySolo.clickOnView(mySolo.getView(R.id.buttonTimeoutBlue));
+		
+		mySolo.getText("30");
+	}
 }
