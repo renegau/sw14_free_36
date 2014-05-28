@@ -53,19 +53,11 @@ public class StartActivity extends Activity implements OnClickListener {
 		
 		if (clicked.getId() == this.button_Start.getId()) 
 		{
-			//AlertDialog.Builder dlgAlert  = new AlertDialog.Builder(this);
-			//dlgAlert.setMessage("Button START pressed");
-			//dlgAlert.create().show();
-			
 			// new Intent
-            Intent main_activity = new Intent(getApplicationContext(), MainActivity.class);
+            Intent settings_activity = new Intent(getApplicationContext(), SettingsActivity.class);
 
-            //Intent mit den Daten füllen
-            //settings_activity.putExtra("Vorname", inputVorname.getText().toString());
-            //settings_activity.putExtra("Nachname", inputNachname.getText().toString());
-
-            // Intent starten und zur zweiten Activity wechseln
-            startActivity(main_activity);
+            // start Intent and change to SettingsActivity
+            startActivity(settings_activity);
 		}
 		
 		else if (clicked.getId() == this.button_Exit.getId())
@@ -78,27 +70,21 @@ public class StartActivity extends Activity implements OnClickListener {
 			
 			dlgAlert.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
 				public void onClick(DialogInterface dialog, int id) {
-					// if this button is clicked, close current activity
-					//App.close();
-					//finish();
+					// if this button is clicked, close all activities
 					ActivityRegistry.finishAll();
-					//finish();
 				}
 			});
 			  
 			dlgAlert.setNegativeButton("No",new DialogInterface.OnClickListener() {
 				public void onClick(DialogInterface dialog,int id) {
-					// if this button is clicked, just close
-					// the dialog box and do nothing
+					// if this button is clicked, just close the dialog box and do nothing
 					dialog.cancel();
 				}
 			});
 				
-			dlgAlert.create().show();
-			
+			dlgAlert.create().show();	
 		}
 			
-		
 	}
 
 }

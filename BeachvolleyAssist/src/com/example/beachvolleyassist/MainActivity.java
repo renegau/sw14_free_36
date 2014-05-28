@@ -141,16 +141,12 @@ public class MainActivity extends Activity implements OnClickListener {
 					
 					// Start Intent und switch to StartActivity
 					startActivity(start_activity);
-					
-					//moveTaskToBack(true);
-					
 				}
 			});
 			  
 			dlgAlert.setNegativeButton("No",new DialogInterface.OnClickListener() {
 				public void onClick(DialogInterface dialog,int id) {
-					// if this button is clicked, just close
-					// the dialog box and do nothing
+					// if this button is clicked, just close the dialog box and do nothing
 					dialog.cancel();
 				}
 			});
@@ -220,8 +216,6 @@ public class MainActivity extends Activity implements OnClickListener {
 		timoutDialog.setMessage(space + "30 seconds left");
 		timoutDialog.setCancelable(false);
 		timoutDialog.show();
-
-		//findViewById(R.layout.mainactivity).setEnabled(true);
 		
 		new CountDownTimer(30000, 1000) 
 		{
