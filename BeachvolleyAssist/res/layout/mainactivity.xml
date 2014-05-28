@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#58ACFA"
+    android:background="#FFFF51"
     android:paddingBottom="5dp"
     android:paddingLeft="5dp"
     android:paddingRight="5dp"
@@ -130,7 +130,7 @@
     android:layout_alignParentBottom="true"
     android:layout_alignParentRight="true"
     android:layout_weight="10"
-    android:background="#040CFC"
+    android:background="#58ACFA"
     android:orientation="vertical" >
 
     <TextView

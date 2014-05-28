@@ -13,6 +13,8 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 
 public class MainActivity extends Activity implements OnClickListener {
 
@@ -31,10 +33,13 @@ public class MainActivity extends Activity implements OnClickListener {
 	boolean red = false;
 	boolean blue = false;
 
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) 
 	{
 		super.onCreate(savedInstanceState);
+		ActivityRegistry.register(this);
+		
 		setContentView(R.layout.mainactivity);
 		
 		this.button_Red = (Button) this.findViewById(R.id.buttonRed);
@@ -81,6 +86,7 @@ public class MainActivity extends Activity implements OnClickListener {
 				dlgAlert.setMessage("TEAM RED WIN THE GAME");
 				dlgAlert.setTitle("CONGRATULATION");
 				dlgAlert.setPositiveButton("OK", null);
+				dlgAlert.setCancelable(false);
 				dlgAlert.create().show();
 				
 				button_Red.setEnabled(false);
@@ -106,6 +112,7 @@ public class MainActivity extends Activity implements OnClickListener {
 				dlgAlert.setTitle("CONGRATULATION");
 				dlgAlert.setPositiveButton("OK", null);
 				dlgAlert.setInverseBackgroundForced(true);
+				dlgAlert.setCancelable(false);
 				dlgAlert.create().show();
 				
 				button_Red.setEnabled(false);
@@ -118,17 +125,38 @@ public class MainActivity extends Activity implements OnClickListener {
 			}
 		}
 		
-		else if (clicked.getId() == this.button_Cancel.getId())
+		else if(clicked.getId() == this.button_Cancel.getId())
 		{
-			button_Red.setEnabled(true);
-			button_Blue.setEnabled(true);
+						
+			dlgAlert.setMessage("Do you really want to cancel the game?");
+			dlgAlert.setTitle("Cancle game");
+			dlgAlert.setCancelable(false);
 			
-			this.counterBlue = 0;
-			this.counterRed = 0;
-			this.red = false;
-			this.blue = false;
-			this.button_Blue.setText(Integer.toString(counterBlue));
-			this.button_Red.setText(Integer.toString(counterRed));
+			dlgAlert.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+				public void onClick(DialogInterface dialog, int id) {
+					// if this button is clicked then change to start activity
+					
+					// new Intent
+					Intent start_activity = new Intent(getApplicationContext(), StartActivity.class);
+					
+					// Start Intent und switch to StartActivity
+					startActivity(start_activity);
+					
+					//moveTaskToBack(true);
+					
+				}
+			});
+			  
+			dlgAlert.setNegativeButton("No",new DialogInterface.OnClickListener() {
+				public void onClick(DialogInterface dialog,int id) {
+					// if this button is clicked, just close
+					// the dialog box and do nothing
+					dialog.cancel();
+				}
+			});
+				
+			dlgAlert.create().show();
+			
 		}
 		
 		else if(clicked.getId() == this.button_Undo.getId())
@@ -156,6 +184,8 @@ public class MainActivity extends Activity implements OnClickListener {
 		{
            timeoutDialog();
 		}
+		
+		
 	}
 	
 	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
@@ -165,6 +195,9 @@ public class MainActivity extends Activity implements OnClickListener {
 	  
 	  dlgAlert.setMessage("CHANGE THE SIDES");
 	  dlgAlert.setPositiveButton("OK", null);
+	  dlgAlert.setCancelable(false);
+	  
+	  dlgAlert.create().show();
 	  
   	  float red_x = layout_red.getX();
 	  float red_y = layout_red.getY();
@@ -174,9 +207,7 @@ public class MainActivity extends Activity implements OnClickListener {
 	  layout_red.setX(blue_x);
 	  layout_red.setY(blue_y);
 	  layout_blue.setX(red_x);
-      layout_blue.setY(red_y);
-      
-	  dlgAlert.create().show();
+      layout_blue.setY(red_y);     
 	}
 	
 	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
@@ -187,6 +218,7 @@ public class MainActivity extends Activity implements OnClickListener {
 		final String space = "                 ";
 		timoutDialog.setTitle(space + "TIMEOUT");
 		timoutDialog.setMessage(space + "30 seconds left");
+		timoutDialog.setCancelable(false);
 		timoutDialog.show();
 
 		//findViewById(R.layout.mainactivity).setEnabled(true);

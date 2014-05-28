@@ -7,7 +7,7 @@
     android:paddingLeft="5dp"
     android:paddingRight="5dp"
     android:paddingTop="15dp"
-    tools:context=".MainActivity" >
+    tools:context=".StartActivity" >
 
     <LinearLayout
         android:id="@+id/linearLayout1"
@@ -33,11 +33,11 @@
             android:id="@+id/textViewAuthors"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:gravity="center_horizontal"
             android:layout_marginTop="36dp"
+            android:gravity="center_horizontal"
             android:text="App Authors:"
             android:textSize="18dp" />
-        
+
         <TextView
             android:id="@+id/textViewAuthorNames"
             android:layout_width="match_parent"
@@ -46,16 +46,26 @@
             android:text="Manuel Haid, Rene Gau, Blaz Kolar "
             android:textSize="18dp"
             android:textStyle="bold" />
-        
+
+        <ImageView
+            android:id="@+id/imageViewBall"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_marginTop="28dp"
+            android:layout_weight="0.71"
+            android:maxHeight="@dimen/activity_vertical_margin"
+            android:maxWidth="@dimen/activity_horizontal_margin"
+            android:src="@drawable/ic_launcher" />
+
         <Button
             android:id="@+id/buttonStort"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="48dp"
+            android:layout_marginTop="28dp"
             android:gravity="center_horizontal"
             android:text="Start" />
-        	   	
+
         <Button
             android:id="@+id/buttonExit"
             android:layout_width="112dp"
@@ -64,9 +74,6 @@
             android:layout_marginTop="20dp"
             android:gravity="center_horizontal"
             android:text="Exit" />
-        
     </LinearLayout>
-
- 
 
 </RelativeLayout>
