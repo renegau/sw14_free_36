@@ -26,21 +26,6 @@ public class MainTest extends ActivityInstrumentationTestCase2<MainActivity> {
 		super.tearDown();
 	}
 	
-	public void testButtons()
-	{
-		mySolo.clickOnView(mySolo.getView(R.id.buttonRed));
-		mySolo.clickOnView(mySolo.getView(R.id.buttonBlue));
-	}
-	
-	public void testButtonRedCounter()
-	{
-		mySolo.clickOnView(mySolo.getView(R.id.buttonRed));
-		mySolo.clickOnView(mySolo.getView(R.id.buttonRed));
-		mySolo.clickOnView(mySolo.getView(R.id.buttonRed));
-
-		mySolo.getText("3");		
-	}
-	
 	public void testButtonBlueCounter()
 	{
 		mySolo.clickOnView(mySolo.getView(R.id.buttonBlue));
@@ -52,67 +37,58 @@ public class MainTest extends ActivityInstrumentationTestCase2<MainActivity> {
 		mySolo.getText("5");
 	}
 	
-	public void testTeamRedWin()
-	{
-		for(int red = 0; red < 21; red++)
-		{
-		  mySolo.clickOnView(mySolo.getView(R.id.buttonRed));
-		}		
-		
-		mySolo.getText("TEAM RED WIN THE GAME");
-	}
-	
-	public void testTeamBlueWin()
-	{	
-		for(int red = 0; red < 20; red++)
-		{
-		  mySolo.clickOnView(mySolo.getView(R.id.buttonRed));
-		}
-		
-		for(int blue = 0; blue < 22; blue++)
-		{
-		  mySolo.clickOnView(mySolo.getView(R.id.buttonBlue));
-		}
-		
-		mySolo.getText("TEAM BLUE WIN THE GAME");
-	}
-	
 	public void testButtonCancel()
 	{
-		for(int red = 0; red < 5; red++)
+		for(int red = 0; red < 3; red++)
 		{
 		  mySolo.clickOnView(mySolo.getView(R.id.buttonRed));
 		}
 		
-		for(int blue = 0; blue < 8; blue++)
+		for(int blue = 0; blue < 2; blue++)
 		{
 		  mySolo.clickOnView(mySolo.getView(R.id.buttonBlue));
 		}
 		
 		mySolo.clickOnView(mySolo.getView(R.id.buttonCancel));
 		
-		mySolo.getText("0");
+		mySolo.getText("Do you really want to cancel the game?");
 	}
 	
+	public void testButtonRedCounter()
+	{
+		mySolo.clickOnView(mySolo.getView(R.id.buttonRed));
+		mySolo.clickOnView(mySolo.getView(R.id.buttonRed));
+		mySolo.clickOnView(mySolo.getView(R.id.buttonRed));
+
+		mySolo.getText("3");		
+	}
+
 	public void testButtonUndo()
 	{
-		for(int red = 0; red < 5; red++)
+		for(int red = 0; red < 2; red++)
 		{
 		  mySolo.clickOnView(mySolo.getView(R.id.buttonRed));
 		}
 		
 		mySolo.clickOnView(mySolo.getView(R.id.buttonUndo));
 		
-		mySolo.getText("4");
+		mySolo.getText("1");
 		
-		for(int blue = 0; blue < 8; blue++)
+		
+		for(int blue = 0; blue < 4; blue++)
 		{
 		  mySolo.clickOnView(mySolo.getView(R.id.buttonBlue));
 		}
 		
 		mySolo.clickOnView(mySolo.getView(R.id.buttonUndo));
 		
-		mySolo.getText("7");
+		mySolo.getText("3");
+	}
+	
+	public void testButtons()
+	{
+		mySolo.clickOnView(mySolo.getView(R.id.buttonRed));
+		mySolo.clickOnView(mySolo.getView(R.id.buttonBlue));
 	}
 	
 	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
@@ -136,6 +112,9 @@ public class MainTest extends ActivityInstrumentationTestCase2<MainActivity> {
 		  mySolo.clickOnView(mySolo.getView(R.id.buttonBlue));
 		}
 		
+		mySolo.getText("Change the sides");
+		mySolo.clickOnView(mySolo.getView(android.R.id.button1));
+		
 		float new_red_x = layout_red.getX();
 		float new_red_y = layout_red.getY();
 		float new_blue_x = layout_blue.getX();
@@ -146,18 +125,70 @@ public class MainTest extends ActivityInstrumentationTestCase2<MainActivity> {
 		assertEquals(blue_x, new_red_x);
 		assertEquals(blue_y, new_red_y);
 	}
-	
-	public void testTimeoutRed()
-	{
-		mySolo.clickOnView(mySolo.getView(R.id.buttonTimeoutRed));
 		
-		mySolo.getText("30");
+	public void testTeamBlueWin()
+	{	
+		for(int red = 0; red < 7; red++)
+		{
+		  mySolo.clickOnView(mySolo.getView(R.id.buttonBlue));
+		}
+		
+		mySolo.getText("Change the sides");
+		mySolo.clickOnView(mySolo.getView(android.R.id.button1));
+		
+		for(int red = 0; red < 7; red++)
+		{
+		  mySolo.clickOnView(mySolo.getView(R.id.buttonBlue));
+		}
+		
+		mySolo.getText("Change the sides");
+		mySolo.clickOnView(mySolo.getView(android.R.id.button1));
+		
+		for(int red = 0; red < 7; red++)
+		{
+		  mySolo.clickOnView(mySolo.getView(R.id.buttonBlue));
+		}
+		
+		mySolo.getText("'Team BLUE' win the game");
+	}
+	
+	public void testTeamRedWin()
+	{
+		for(int red = 0; red < 7; red++)
+		{
+		  mySolo.clickOnView(mySolo.getView(R.id.buttonRed));
+		}
+		
+		mySolo.getText("Change the sides");
+		mySolo.clickOnView(mySolo.getView(android.R.id.button1));
+		
+		for(int red = 0; red < 7; red++)
+		{
+		  mySolo.clickOnView(mySolo.getView(R.id.buttonRed));
+		}
+		
+		mySolo.getText("Change the sides");
+		mySolo.clickOnView(mySolo.getView(android.R.id.button1));
+		
+		for(int red = 0; red < 7; red++)
+		{
+		  mySolo.clickOnView(mySolo.getView(R.id.buttonRed));
+		}	
+		
+		mySolo.getText("'Team RED' win the game");
 	}
 	
 	public void testTimeoutBlue()
 	{
 		mySolo.clickOnView(mySolo.getView(R.id.buttonTimeoutBlue));
-		
-		mySolo.getText("30");
+		mySolo.searchText("Timeout 'Team BLUE'");
 	}
+	
+	
+	public void testTimeoutRed()
+	{
+		mySolo.clickOnView(mySolo.getView(R.id.buttonTimeoutRed));
+		mySolo.searchText("Timeout 'Team RED'");
+	}
+	
 }

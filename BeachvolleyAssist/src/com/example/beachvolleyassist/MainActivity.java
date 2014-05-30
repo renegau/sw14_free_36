@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -32,7 +33,20 @@ public class MainActivity extends Activity implements OnClickListener {
 	int counterBlue = 0;
 	boolean red = false;
 	boolean blue = false;
-
+	
+	Settings settings;
+	
+	private TextView textView_TeamBlueName;
+	private TextView textView_TeamRedName;
+	private TextView textView_TeamBluePlayer1;
+	private TextView textView_TeamBluePlayer2;
+	private TextView textView_TeamRedPlayer1;
+	private TextView textView_TeamRedPlayer2;
+	
+	public enum Team
+	{
+	  RED, BLUE
+	}
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) 
@@ -41,6 +55,8 @@ public class MainActivity extends Activity implements OnClickListener {
 		ActivityRegistry.register(this);
 		
 		setContentView(R.layout.mainactivity);
+		
+		settings = (Settings) getApplication();
 		
 		this.button_Red = (Button) this.findViewById(R.id.buttonRed);
 		this.button_Blue = (Button) this.findViewById(R.id.buttonBlue);
@@ -58,6 +74,24 @@ public class MainActivity extends Activity implements OnClickListener {
 		this.button_Undo.setOnClickListener(this);
 		this.button_TimeoutRed.setOnClickListener(this);
 		this.button_TimeoutBlue.setOnClickListener(this);
+		
+		textView_TeamBlueName = (TextView) this.findViewById(R.id.textTeamBlueName);
+		textView_TeamBlueName.setText(settings.getTeamBlueName());
+		
+		textView_TeamRedName = (TextView) this.findViewById(R.id.textTeamRedName);
+		textView_TeamRedName.setText(settings.getTeamRedName());
+		
+		textView_TeamBluePlayer1 = (TextView) this.findViewById(R.id.textPlayer1Blue);
+		textView_TeamBluePlayer1.setText(settings.getTeamBluePlayer1());
+		
+		textView_TeamBluePlayer2 = (TextView) this.findViewById(R.id.textPlayer2Blue);
+		textView_TeamBluePlayer2.setText(settings.getTeamBluePlayer2());
+		
+		textView_TeamRedPlayer1 = (TextView) this.findViewById(R.id.textPlayer1Red);
+		textView_TeamRedPlayer1.setText(settings.getTeamRedPlayer1());
+		
+		textView_TeamRedPlayer2 = (TextView) this.findViewById(R.id.textPlayer2Red);
+		textView_TeamRedPlayer2.setText(settings.getTeamRedPlayer2());
 	}
 
 	@Override
@@ -83,8 +117,8 @@ public class MainActivity extends Activity implements OnClickListener {
 			
 			if(counterRed >= 21 && counterBlue < (counterRed - 1))
 			{
-				dlgAlert.setMessage("TEAM RED WIN THE GAME");
-				dlgAlert.setTitle("CONGRATULATION");
+				dlgAlert.setMessage("'Team RED' win the game");
+				dlgAlert.setTitle("Congratulation");
 				dlgAlert.setPositiveButton("OK", null);
 				dlgAlert.setCancelable(false);
 				dlgAlert.create().show();
@@ -108,8 +142,8 @@ public class MainActivity extends Activity implements OnClickListener {
 			
 			if(counterBlue >= 21 && counterRed < (counterBlue - 1))
 			{	
-				dlgAlert.setMessage("TEAM BLUE WIN THE GAME");
-				dlgAlert.setTitle("CONGRATULATION");
+				dlgAlert.setMessage("'Team BLUE' win the game");
+				dlgAlert.setTitle("Congratulation");
 				dlgAlert.setPositiveButton("OK", null);
 				dlgAlert.setInverseBackgroundForced(true);
 				dlgAlert.setCancelable(false);
@@ -173,12 +207,14 @@ public class MainActivity extends Activity implements OnClickListener {
 		
 		else if(clicked.getId() == this.button_TimeoutRed.getId())
 		{
-			timeoutDialog();
+			Team team = Team.RED;
+			timeoutDialog(team);
 		}
 		
 		else if(clicked.getId() == this.button_TimeoutBlue.getId())
 		{
-           timeoutDialog();
+			Team team = Team.BLUE;
+			timeoutDialog(team);
 		}
 		
 		
@@ -189,7 +225,7 @@ public class MainActivity extends Activity implements OnClickListener {
 	{
 	  AlertDialog.Builder dlgAlert  = new AlertDialog.Builder(this);
 	  
-	  dlgAlert.setMessage("CHANGE THE SIDES");
+	  dlgAlert.setMessage("Change the sides");
 	  dlgAlert.setPositiveButton("OK", null);
 	  dlgAlert.setCancelable(false);
 	  
@@ -207,26 +243,35 @@ public class MainActivity extends Activity implements OnClickListener {
 	}
 	
 	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
-	public void timeoutDialog()
+	public void timeoutDialog(Team team)
 	{
-		final AlertDialog timoutDialog = new AlertDialog.Builder(this).create();
+		final AlertDialog timeoutDialog = new AlertDialog.Builder(this).create();
 		
-		final String space = "                 ";
-		timoutDialog.setTitle(space + "TIMEOUT");
-		timoutDialog.setMessage(space + "30 seconds left");
-		timoutDialog.setCancelable(false);
-		timoutDialog.show();
+		//final String space = "                 ";
+		
+		if (team == Team.RED)
+		{
+			timeoutDialog.setTitle("Timeout 'Team RED'");
+		}
+		else if (team == Team.BLUE)
+		{
+			timeoutDialog.setTitle("Timeout 'Team BLUE'");
+		}
+		
+		timeoutDialog.setMessage("30 seconds left");
+		timeoutDialog.setCancelable(false);
+		timeoutDialog.show();
 		
 		new CountDownTimer(30000, 1000) 
 		{
 		    public void onTick(long milliSeconds) 
 		    {
-		       timoutDialog.setMessage((space + milliSeconds/1000) + " seconds left");
+		       timeoutDialog.setMessage((milliSeconds/1000) + " seconds left");
 		    }
 
 		    public void onFinish() 
 		    {
-		    	timoutDialog.cancel();
+		    	timeoutDialog.cancel();
 		    }
 		}.start();
 	}

@@ -44,12 +44,12 @@ public final class R {
         public static final int linearLayout1=0x7f080018;
         public static final int ratingBarBlue=0x7f080013;
         public static final int ratingBarRed=0x7f080006;
-        public static final int textBlue=0x7f08000e;
         public static final int textPlayer1Blue=0x7f080010;
         public static final int textPlayer1Red=0x7f080003;
         public static final int textPlayer2Blue=0x7f080012;
         public static final int textPlayer2Red=0x7f080005;
-        public static final int textRed=0x7f080001;
+        public static final int textTeamBlueName=0x7f08000e;
+        public static final int textTeamRedName=0x7f080001;
         public static final int textViewAppTitle=0x7f080019;
         public static final int textViewAuthorNames=0x7f08001c;
         public static final int textViewAuthors=0x7f08001b;
