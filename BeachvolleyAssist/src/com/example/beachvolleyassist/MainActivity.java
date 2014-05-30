@@ -1,7 +1,5 @@
 package com.example.beachvolleyassist;
 
-import com.example.beachvolleyassist.R.layout;
-
 import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
