@@ -11,7 +11,7 @@ public class Settings extends Application {
 	private String _teamBluePlayer2 = "Player 2";
 	
 	private String _teamRedPlayer1  = "Player 1";
-	private String _teamRedPlayer2  = "Player 2xx";
+	private String _teamRedPlayer2  = "Player 2";
 	
 	public void onCreate(){
         super.onCreate();

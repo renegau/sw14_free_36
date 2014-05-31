@@ -1,7 +1,5 @@
 package com.example.beachvolleyassist;
 
-import com.example.beachvolleyassist.R.layout;
-
 import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -11,14 +9,16 @@ import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RatingBar;
 import android.widget.TextView;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 
-public class MainActivity extends Activity implements OnClickListener {
-
+public class MainActivity extends Activity implements OnClickListener 
+{
 	private Button button_Red;
 	private Button button_Blue;
 	private Button button_Cancel;
@@ -34,6 +34,15 @@ public class MainActivity extends Activity implements OnClickListener {
 	boolean red = false;
 	boolean blue = false;
 	
+	int timeoutleft_red = 2;
+	int timeoutleft_blue = 2;
+	
+	boolean ball_red = true;
+	boolean ball_blue = true;
+	
+	int redSet = 0;
+	int blueSet = 0;
+	
 	Settings settings;
 	
 	private TextView textView_TeamBlueName;
@@ -42,6 +51,19 @@ public class MainActivity extends Activity implements OnClickListener {
 	private TextView textView_TeamBluePlayer2;
 	private TextView textView_TeamRedPlayer1;
 	private TextView textView_TeamRedPlayer2;
+	
+	private ImageView imageView_Timeout1_Red;
+	private ImageView imageView_Timeout2_Red;
+	private ImageView imageView_Timeout1_Blue;
+	private ImageView imageView_Timeout2_Blue;
+	
+	private ImageView imageView_Ball1_Red;
+	private ImageView imageView_Ball2_Red;
+	private ImageView imageView_Ball1_Blue;
+	private ImageView imageView_Ball2_Blue;
+	
+	private RatingBar rb_blue;
+	private RatingBar rb_red;
 	
 	public enum Team
 	{
@@ -92,10 +114,29 @@ public class MainActivity extends Activity implements OnClickListener {
 		
 		textView_TeamRedPlayer2 = (TextView) this.findViewById(R.id.textPlayer2Red);
 		textView_TeamRedPlayer2.setText(settings.getTeamRedPlayer2());
+		
+		imageView_Timeout1_Red = (ImageView) findViewById(R.id.viewTimeoutRed1);
+		imageView_Timeout2_Red = (ImageView) findViewById(R.id.viewTimeoutRed2);
+		imageView_Timeout1_Blue = (ImageView) findViewById(R.id.viewTimeoutBlue1);
+		imageView_Timeout2_Blue = (ImageView) findViewById(R.id.viewTimeoutBlue2);
+		
+		imageView_Ball1_Red = (ImageView) findViewById(R.id.viewBallRed1);
+		imageView_Ball2_Red = (ImageView) findViewById(R.id.viewBallRed2);
+		imageView_Ball1_Blue = (ImageView) findViewById(R.id.viewBallBlue1);
+		imageView_Ball2_Blue = (ImageView) findViewById(R.id.viewBallBlue2);
+		
+		imageView_Ball1_Red.setVisibility(View.INVISIBLE);
+		imageView_Ball2_Red.setVisibility(View.INVISIBLE);
+		imageView_Ball1_Blue.setVisibility(View.INVISIBLE);
+		imageView_Ball2_Blue.setVisibility(View.INVISIBLE);
+		
+		rb_red  = (RatingBar) findViewById(R.id.ratingBarRed);
+		rb_blue = (RatingBar) findViewById(R.id.ratingBarBlue);
 	}
 
 	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
+	public boolean onCreateOptionsMenu(Menu menu) 
+	{
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
@@ -117,22 +158,54 @@ public class MainActivity extends Activity implements OnClickListener {
 			
 			if(counterRed >= 21 && counterBlue < (counterRed - 1))
 			{
-				dlgAlert.setMessage("'Team RED' win the game");
-				dlgAlert.setTitle("Congratulation");
-				dlgAlert.setPositiveButton("OK", null);
-				dlgAlert.setCancelable(false);
-				dlgAlert.create().show();
+				redSet++;
+				rb_red.setRating(redSet + 1);
 				
-				button_Red.setEnabled(false);
-				button_Blue.setEnabled(false);
+				if(redSet == 2)
+				{
+					dlgAlert.setMessage("'Team RED' win the game!");
+					dlgAlert.setTitle("Congratulation");
+					dlgAlert.setPositiveButton("OK", null);
+					dlgAlert.setCancelable(false);
+					dlgAlert.create().show();
+					
+					button_Red.setEnabled(false);
+					button_Blue.setEnabled(false);
+				}
+				else
+				{
+					dlgAlert.setMessage("'Team RED' win this set!");
+					dlgAlert.setTitle("Congratulation");
+					dlgAlert.setPositiveButton("OK", null);
+					dlgAlert.setCancelable(false);
+					dlgAlert.create().show();
+					setAllNull();
+				}
 			}
-			
 			else if(((counterRed + counterBlue) % 7) == 0)
 			{
 				changeLayout();
 			}
+			
+			if(ball_red == true)
+			{
+		      imageView_Ball1_Red.setVisibility(View.VISIBLE);
+			  imageView_Ball2_Red.setVisibility(View.INVISIBLE);
+			  imageView_Ball1_Blue.setVisibility(View.INVISIBLE);
+			  imageView_Ball2_Blue.setVisibility(View.INVISIBLE);
+			  
+			  ball_blue = true;
+			}
+			else if(ball_red == false)
+			{
+		      imageView_Ball2_Red.setVisibility(View.VISIBLE);
+			  imageView_Ball1_Red.setVisibility(View.INVISIBLE);
+			  imageView_Ball1_Blue.setVisibility(View.INVISIBLE);
+			  imageView_Ball2_Blue.setVisibility(View.INVISIBLE);
+			  
+			  ball_blue = false;
+			}
 		} 
-		
 		else if (clicked.getId() == this.button_Blue.getId())
 		{
 			this.counterBlue += 1;
@@ -141,54 +214,86 @@ public class MainActivity extends Activity implements OnClickListener {
 			this.blue = true;
 			
 			if(counterBlue >= 21 && counterRed < (counterBlue - 1))
-			{	
-				dlgAlert.setMessage("'Team BLUE' win the game");
-				dlgAlert.setTitle("Congratulation");
-				dlgAlert.setPositiveButton("OK", null);
-				dlgAlert.setInverseBackgroundForced(true);
-				dlgAlert.setCancelable(false);
-				dlgAlert.create().show();
+			{					
+				blueSet++;
+				rb_blue.setRating(blueSet + 1);
 				
-				button_Red.setEnabled(false);
-				button_Blue.setEnabled(false);
+				if(blueSet == 2)
+				{
+					dlgAlert.setMessage("'Team BLUE' win the game!");
+					dlgAlert.setTitle("Congratulation");
+					dlgAlert.setPositiveButton("OK", null);
+					dlgAlert.setCancelable(false);
+					dlgAlert.create().show();
+					
+					button_Red.setEnabled(false);
+					button_Blue.setEnabled(false);
+				}
+				else
+				{
+					dlgAlert.setMessage("'Team BLUE' win this set!");
+					dlgAlert.setTitle("Congratulation");
+					dlgAlert.setPositiveButton("OK", null);
+					dlgAlert.setCancelable(false);
+					dlgAlert.create().show();
+					setAllNull();
+				}
 			}
-			
 			else if(((counterRed + counterBlue) % 7) == 0)
 			{
 				changeLayout();
 			}
+			
+			if(ball_blue == true)
+			{
+		      imageView_Ball1_Blue.setVisibility(View.VISIBLE);
+			  imageView_Ball1_Red.setVisibility(View.INVISIBLE);
+			  imageView_Ball2_Red.setVisibility(View.INVISIBLE);
+			  imageView_Ball2_Blue.setVisibility(View.INVISIBLE);
+			  
+			  ball_red = false;
+			}
+			else if(ball_blue == false)
+			{
+		      imageView_Ball2_Blue.setVisibility(View.VISIBLE);
+			  imageView_Ball1_Red.setVisibility(View.INVISIBLE);
+			  imageView_Ball2_Red.setVisibility(View.INVISIBLE);
+			  imageView_Ball1_Blue.setVisibility(View.INVISIBLE);
+			  
+			  ball_red = true;
+			}
 		}
-		
 		else if(clicked.getId() == this.button_Cancel.getId())
-		{
-						
+		{	
 			dlgAlert.setMessage("Do you really want to cancel the game?");
 			dlgAlert.setTitle("Cancle game");
 			dlgAlert.setCancelable(false);
 			
-			dlgAlert.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-				public void onClick(DialogInterface dialog, int id) {
+			dlgAlert.setPositiveButton("Yes", new DialogInterface.OnClickListener() 
+			{
+				public void onClick(DialogInterface dialog, int id) 
+				{
 					// if this button is clicked then change to start activity
 					
 					// new Intent
 					Intent start_activity = new Intent(getApplicationContext(), StartActivity.class);
 					
-					// Start Intent und switch to StartActivity
+					// Start Intent and switch to StartActivity
 					startActivity(start_activity);
 				}
 			});
 			  
-			dlgAlert.setNegativeButton("No",new DialogInterface.OnClickListener() {
-				public void onClick(DialogInterface dialog,int id) {
+			dlgAlert.setNegativeButton("No",new DialogInterface.OnClickListener() 
+			{
+				public void onClick(DialogInterface dialog,int id) 
+				{
 					// if this button is clicked, just close the dialog box and do nothing
 					dialog.cancel();
 				}
 			});
 				
-			dlgAlert.create().show();
-			
+			dlgAlert.create().show();			
 		}
-		
 		else if(clicked.getId() == this.button_Undo.getId())
 		{
 			if(red == true)
@@ -204,24 +309,78 @@ public class MainActivity extends Activity implements OnClickListener {
 				this.blue = false;
 			}
 		}
-		
 		else if(clicked.getId() == this.button_TimeoutRed.getId())
 		{
 			Team team = Team.RED;
 			timeoutDialog(team);
+			
+			if(timeoutleft_red == 2)
+			{
+		      imageView_Timeout1_Red.setImageResource(R.drawable.ic_delete);
+		      timeoutleft_red--;
+			}
+			else if(timeoutleft_red == 1)
+			{
+		      imageView_Timeout2_Red.setImageResource(R.drawable.ic_delete);
+		      timeoutleft_red--;
+			}
+			
+			if(timeoutleft_red == 0)
+			{
+				button_TimeoutRed.setEnabled(false);
+			}
 		}
-		
 		else if(clicked.getId() == this.button_TimeoutBlue.getId())
 		{
 			Team team = Team.BLUE;
 			timeoutDialog(team);
-		}
-		
-		
+			
+			if(timeoutleft_blue == 2)
+			{
+		      imageView_Timeout1_Blue.setImageResource(R.drawable.ic_delete);
+		      timeoutleft_blue--;
+			}
+			else if(timeoutleft_blue == 1)
+			{
+		      imageView_Timeout2_Blue.setImageResource(R.drawable.ic_delete);
+		      timeoutleft_blue--;
+			}
+			
+			if(timeoutleft_blue == 0)
+			{
+		      button_TimeoutBlue.setEnabled(false);
+			}
+		}	
 	}
 	
+	private void setAllNull() 
+	{
+	  counterRed = 0;
+	  counterBlue = 0;
+		
+	  red = false;
+	  blue = false;
+		
+	  timeoutleft_red = 2;
+	  timeoutleft_blue = 2;
+		
+	  ball_red = true;
+      ball_blue = true;
+	  
+	  button_Blue.setText(Integer.toString(counterBlue));
+	  button_Red.setText(Integer.toString(counterRed));
+	  
+      button_TimeoutRed.setEnabled(true);
+	  button_TimeoutBlue.setEnabled(true);
+	  
+	  imageView_Timeout1_Red.setImageResource(R.drawable.ic_media_pause);
+	  imageView_Timeout2_Red.setImageResource(R.drawable.ic_media_pause);
+	  imageView_Timeout1_Blue.setImageResource(R.drawable.ic_media_pause);
+	  imageView_Timeout2_Blue.setImageResource(R.drawable.ic_media_pause);
+	}
+
 	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
-	public void changeLayout()
+	private void changeLayout()
 	{
 	  AlertDialog.Builder dlgAlert  = new AlertDialog.Builder(this);
 	  
@@ -243,7 +402,7 @@ public class MainActivity extends Activity implements OnClickListener {
 	}
 	
 	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
-	public void timeoutDialog(Team team)
+	private void timeoutDialog(Team team)
 	{
 		final AlertDialog timeoutDialog = new AlertDialog.Builder(this).create();
 		
@@ -262,7 +421,7 @@ public class MainActivity extends Activity implements OnClickListener {
 		timeoutDialog.setCancelable(false);
 		timeoutDialog.show();
 		
-		new CountDownTimer(30000, 1000) 
+		new CountDownTimer(3000, 1000)
 		{
 		    public void onTick(long milliSeconds) 
 		    {

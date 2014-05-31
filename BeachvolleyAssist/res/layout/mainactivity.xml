@@ -28,12 +28,12 @@
         android:textColor="#000000"/>
 
     <ImageView
-        android:id="@+id/imageView1"
+        android:id="@+id/viewBallRed1"
         android:layout_width="20dp"
         android:layout_height="26dp"
         android:layout_marginLeft="0dp"
         android:layout_marginTop="0dp"
-        android:src="@android:drawable/btn_radio" />
+        android:src="@drawable/ic_launcher" />
 
     <TextView
         android:id="@+id/textPlayer1Red"
@@ -46,12 +46,12 @@
         android:textColor="#BDBDBD" />
         
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/viewBallRed2"
         android:layout_width="20dp"
         android:layout_height="26dp"
         android:layout_marginLeft="0dp"
         android:layout_marginTop="0dp"
-        android:src="@android:drawable/btn_radio" />
+        android:src="@drawable/ic_launcher" />
     
     <TextView
         android:id="@+id/textPlayer2Red"
@@ -86,7 +86,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="40dp"
         android:layout_marginTop="-5dp"
-        android:src="@android:drawable/ic_media_pause" />
+        android:src="@drawable/ic_media_pause" />
     
     <ImageView
         android:id="@+id/viewTimeoutRed2"
@@ -94,7 +94,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="80dp"
         android:layout_marginTop="-32dp"
-        android:src="@android:drawable/ic_media_pause" />
+        android:src="@drawable/ic_media_pause" />
 
     <Button
         android:id="@+id/buttonRed"
@@ -144,12 +144,12 @@
         android:textStyle="bold" />
     
      <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/viewBallBlue1"
         android:layout_width="20dp"
         android:layout_height="26dp"
         android:layout_marginLeft="0dp"
         android:layout_marginTop="0dp"
-        android:src="@android:drawable/btn_radio" />
+        android:src="@drawable/ic_launcher" />
 
     <TextView
         android:id="@+id/textPlayer1Blue"
@@ -162,12 +162,12 @@
         android:textColor="#BDBDBD"/>
     
     <ImageView
-        android:id="@+id/imageView4"
+        android:id="@+id/viewBallBlue2"
         android:layout_width="20dp"
         android:layout_height="26dp"
         android:layout_marginLeft="0dp"
         android:layout_marginTop="0dp"
-        android:src="@android:drawable/btn_radio" />
+        android:src="@drawable/ic_launcher" />
 
     <TextView
         android:id="@+id/textPlayer2Blue"
@@ -196,13 +196,13 @@
         android:text="Timeout"
         android:textSize="20sp" />
     
-        <ImageView
+      <ImageView
         android:id="@+id/viewTimeoutBlue1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="40dp"
         android:layout_marginTop="-5dp"
-        android:src="@android:drawable/ic_media_pause" />
+        android:src="@drawable/ic_media_pause" />   
     
       <ImageView
         android:id="@+id/viewTimeoutBlue2"
@@ -210,7 +210,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="80dp"
         android:layout_marginTop="-32dp"
-        android:src="@android:drawable/ic_media_pause" />
+        android:src="@drawable/ic_media_pause" />
 
     <Button
         android:id="@+id/buttonBlue"
