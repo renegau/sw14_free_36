@@ -17,52 +17,52 @@ public class Settings extends Application {
         super.onCreate();
     }
 	
-	void setTeamBlueName(String name) {
+	public void setTeamBlueName(String name) {
 		this._teamBlueName = name;
 	}
 	
-	void setTeamRedName(String name) {
+	public void setTeamRedName(String name) {
 		this._teamRedName = name;
 	}
 	
-	void setTeamBluePlayer1(String name) {
+	public void setTeamBluePlayer1(String name) {
 		this._teamBluePlayer1 = name;
 	}
 	
-	void setTeamBluePlayer2(String name) {
+	public void setTeamBluePlayer2(String name) {
 		this._teamBluePlayer2 = name;
 	}
 	
-	void setTeamRedPlayer1(String name) {
+	public void setTeamRedPlayer1(String name) {
 		this._teamRedPlayer1 = name;
 	}
 	
-	void setTeamRedPlayer2(String name) {
+	public void setTeamRedPlayer2(String name) {
 		this._teamRedPlayer2 = name;
 	}
 	
 	
-	String getTeamBlueName() {
+	public String getTeamBlueName() {
 		return this._teamBlueName;
 	}
 	
-	String getTeamRedName() {
+	public String getTeamRedName() {
 		return this._teamRedName;
 	}
 	
-	String getTeamBluePlayer1() {
+	public String getTeamBluePlayer1() {
 		return this._teamBluePlayer1;
 	}
 	
-	String getTeamBluePlayer2() {
+	public String getTeamBluePlayer2() {
 		return this._teamBluePlayer2;
 	}
 	
-	String getTeamRedPlayer1() {
+	public String getTeamRedPlayer1() {
 		return this._teamRedPlayer1;
 	}
 	
-	String getTeamRedPlayer2() {
+	public String getTeamRedPlayer2() {
 		return this._teamRedPlayer2;
 	}
 	
