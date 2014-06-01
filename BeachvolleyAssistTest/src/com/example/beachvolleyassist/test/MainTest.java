@@ -126,7 +126,7 @@ public class MainTest extends ActivityInstrumentationTestCase2<MainActivity> {
 		assertEquals(blue_y, new_red_y);
 	}
 		
-	public void testTeamBlueWin()
+	public void testTeamBlueWinSet()
 	{	
 		for(int red = 0; red < 7; red++)
 		{
@@ -149,10 +149,10 @@ public class MainTest extends ActivityInstrumentationTestCase2<MainActivity> {
 		  mySolo.clickOnView(mySolo.getView(R.id.buttonBlue));
 		}
 		
-		mySolo.getText("'Team BLUE' win the game");
+		mySolo.getText("'Team BLUE' win this set");
 	}
 	
-	public void testTeamRedWin()
+	public void testTeamRedWinSet()
 	{
 		for(int red = 0; red < 7; red++)
 		{
@@ -175,7 +175,7 @@ public class MainTest extends ActivityInstrumentationTestCase2<MainActivity> {
 		  mySolo.clickOnView(mySolo.getView(R.id.buttonRed));
 		}	
 		
-		mySolo.getText("'Team RED' win the game");
+		mySolo.getText("'Team RED' win this set");
 	}
 	
 	public void testTimeoutBlue()
