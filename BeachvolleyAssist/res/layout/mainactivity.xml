@@ -15,7 +15,7 @@
     android:layout_height="400dp"
     android:layout_marginTop="50dp"
     android:orientation="vertical" 
-    android:background="#ffff0000">
+    android:background="#66ff0000">
 
     <TextView
         android:id="@+id/textTeamRedName"
@@ -130,7 +130,7 @@
     android:layout_alignParentBottom="true"
     android:layout_alignParentRight="true"
     android:layout_weight="10"
-    android:background="#58ACFA"
+    android:background="#8858ACFA"
     android:orientation="vertical" >
 
     <TextView

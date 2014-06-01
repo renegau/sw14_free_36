@@ -1,7 +1,5 @@
 package com.example.beachvolleyassist;
 
-import com.example.beachvolleyassist.R.layout;
-
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.AlertDialog;

@@ -28,6 +28,60 @@
             android:textColor="#58ACFA"
             android:textSize="24dp" />
 
+        <TextView
+            android:id="@+id/textViewTeamRed"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            android:text="Team RED"
+            android:background="#66ff0000"
+            android:textSize="16dp" />
+
+        <EditText
+            android:id="@+id/editTextTeamRedPlayer1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Player #1" 
+            android:selectAllOnFocus="true" />
+        
+        <EditText
+            android:id="@+id/editTextTeamRedPlayer2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Player #2" 
+            android:selectAllOnFocus="true" />
+    
+        <TextView
+            android:id="@+id/textViewTeamBlue"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            android:text="Team BLUE"
+            android:background="#8858ACFA"
+            android:textSize="16dp" />
+
+        <EditText
+            android:id="@+id/editTextTeamBluePlayer1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Player #1" 
+            android:selectAllOnFocus="true" />
+        
+        <EditText
+            android:id="@+id/editTextTeamBluePlayer2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Player #2" 
+            android:selectAllOnFocus="true" />
+    
         <Button
             android:id="@+id/buttonOk"
             android:layout_width="match_parent"
