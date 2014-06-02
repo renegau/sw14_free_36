@@ -1,0 +1,296 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#FFFFFF"
+    android:paddingBottom="5dp"
+    android:paddingLeft="5dp"
+    android:paddingRight="5dp"
+    android:paddingTop="5dp"
+    tools:context=".TossActivity" >
+
+    <RelativeLayout
+    	android:layout_width="match_parent"
+    	android:layout_height="wrap_content" >
+    
+            <Button
+                android:id="@+id/buttonCancel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:text="Cancel" />
+                
+            <Button
+                android:id="@+id/buttonUndo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:text="Undo" />
+
+            <TextView
+                android:id="@+id/textViewTossTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:gravity="center"
+                android:text="The toss"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="#58ACFA"
+                android:textSize="24dp" />
+       
+    </RelativeLayout>
+
+	<ScrollView
+        android:id="@+id/scrollView1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+        
+        <LinearLayout
+            android:id="@+id/LayoutLinear"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:id="@+id/LayoutStep1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+                
+                <TextView
+		            android:id="@+id/textViewStep1"
+		            android:layout_width="match_parent"
+		            android:layout_height="wrap_content"
+		            android:layout_marginTop="14dp"
+		            android:text="Step 1/4: The winner of the toss is?"
+		            
+		            android:textSize="16dp" />
+                
+               <Button
+                    android:id="@+id/buttonTeamRed"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/textViewStep1"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="4dp"
+                    android:background="#66ff0000"
+                    android:textSize="14dp"
+                    android:text="Team RED \n Player #1 \n Player #2" /> 
+
+                <Button
+                    android:id="@+id/buttonTeamBlue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_below="@+id/textViewStep1"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="4dp"
+                    android:background="#8858ACFA"
+                    android:textSize="14dp"
+                    android:text="Team BLUE \n Player #1 \n Player #2" /> 
+                
+            </RelativeLayout>
+            
+            <RelativeLayout
+                android:id="@+id/LayoutStep2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="visible" >
+                
+                <TextView
+		            android:id="@+id/textViewStep2"
+		            android:layout_width="match_parent"
+		            android:layout_height="wrap_content"
+		            android:layout_marginTop="14dp"
+		            android:text="Step 2/4: Winner of the toss (Team XXX) is choosing?"
+		            
+		            android:textSize="16dp" />
+                
+                <LinearLayout
+		            android:id="@+id/LayoutLinearStep2"
+		            android:layout_width="match_parent"
+		            android:layout_height="match_parent" 
+		            android:orientation="horizontal"
+		            android:layout_below="@+id/textViewStep2" >
+		            
+                    <Button
+	                    android:id="@+id/buttonStep2Service"
+	                    android:layout_width="wrap_content"
+	                    android:layout_height="wrap_content"
+	                    android:layout_marginTop="4dp"
+	                    android:layout_weight="1"
+	                    android:textSize="14dp"
+	                    android:text="Service" />
+                    
+                    <Button
+	                    android:id="@+id/buttonStep2Return"
+	                    android:layout_width="wrap_content"
+	                    android:layout_height="wrap_content"
+	                    android:layout_marginTop="4dp"
+	                    android:layout_weight="1"
+	                    android:textSize="14dp"
+	                    android:text="Return" /> 
+	                    
+                    <Button
+	                    android:id="@+id/buttonStep2Leftside"
+	                    android:layout_width="wrap_content"
+	                    android:layout_height="wrap_content"
+	                    android:layout_marginTop="4dp"
+	                    android:layout_weight="2"
+	                    android:textSize="14dp"
+	                    android:text="Left side" /> 
+	                    
+                    <Button
+	                    android:id="@+id/buttonStep2Rightside"
+	                    android:layout_width="wrap_content"
+	                    android:layout_height="wrap_content"
+	                    android:layout_marginTop="4dp"
+	                    android:layout_weight="2"
+	                    android:textSize="14dp"
+	                    android:text="Right side" /> 
+	                    
+                </LinearLayout>
+                
+            </RelativeLayout>
+            
+            <RelativeLayout
+                android:id="@+id/LayoutStep3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="visible" >
+                
+                <TextView
+		            android:id="@+id/textViewStep3"
+		            android:layout_width="match_parent"
+		            android:layout_height="wrap_content"
+		            android:layout_marginTop="14dp"
+		            android:text="Step 3/4: Looser of the toss (Team XXX) is choosing?"
+		            
+		            android:textSize="16dp" />
+                
+                <LinearLayout
+		            android:id="@+id/LayoutLinearStep3"
+		            android:layout_width="match_parent"
+		            android:layout_height="match_parent" 
+		            android:orientation="horizontal"
+		            android:layout_below="@+id/textViewStep3" >
+		            
+                    <Button
+	                    android:id="@+id/buttonStep3Service"
+	                    android:layout_width="wrap_content"
+	                    android:layout_height="wrap_content"
+	                    android:layout_marginTop="4dp"
+	                    android:layout_weight="1"
+	                    android:textSize="14dp"
+	                    android:text="Service" />
+                    
+                    <Button
+	                    android:id="@+id/buttonStep3Return"
+	                    android:layout_width="wrap_content"
+	                    android:layout_height="wrap_content"
+	                    android:layout_marginTop="4dp"
+	                    android:layout_weight="1"
+	                    android:textSize="14dp"
+	                    android:text="Return" /> 
+	                    
+                    <Button
+	                    android:id="@+id/buttonStep3Leftside"
+	                    android:layout_width="wrap_content"
+	                    android:layout_height="wrap_content"
+	                    android:layout_marginTop="4dp"
+	                    android:layout_weight="2"
+	                    android:textSize="14dp"
+	                    android:text="Left side" /> 
+	                    
+                    <Button
+	                    android:id="@+id/buttonStep3Rightside"
+	                    android:layout_width="wrap_content"
+	                    android:layout_height="wrap_content"
+	                    android:layout_marginTop="4dp"
+	                    android:layout_weight="2"
+	                    android:textSize="14dp"
+	                    android:text="Right side" /> 
+	                    
+                </LinearLayout>
+                
+            </RelativeLayout>
+            
+            <RelativeLayout
+                android:id="@+id/LayoutStep4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="visible" >
+                
+                <TextView
+		            android:id="@+id/textViewStep4"
+		            android:layout_width="match_parent"
+		            android:layout_height="wrap_content"
+		            android:layout_marginTop="14dp"
+		            android:text="Step 4/4: First service player of each team is?"
+		            
+		            android:textSize="16dp" />
+                
+                <LinearLayout
+		            android:id="@+id/LayoutLinearStep4"
+		            android:layout_width="match_parent"
+		            android:layout_height="match_parent" 
+		            android:orientation="horizontal"
+		            android:layout_below="@+id/textViewStep4" >
+		            
+                    <Button
+	                    android:id="@+id/buttonStep3Service"
+	                    android:layout_width="wrap_content"
+	                    android:layout_height="wrap_content"
+	                    android:layout_marginTop="4dp"
+	                    android:layout_weight="1"
+	                    android:textSize="14dp"
+	                    android:text="Service" />
+                    
+                    <Button
+	                    android:id="@+id/buttonStep3Return"
+	                    android:layout_width="wrap_content"
+	                    android:layout_height="wrap_content"
+	                    android:layout_marginTop="4dp"
+	                    android:layout_weight="1"
+	                    android:textSize="14dp"
+	                    android:text="Return" /> 
+	                    
+                    <Button
+	                    android:id="@+id/buttonStep3Leftside"
+	                    android:layout_width="wrap_content"
+	                    android:layout_height="wrap_content"
+	                    android:layout_marginTop="4dp"
+	                    android:layout_weight="2"
+	                    android:textSize="14dp"
+	                    android:text="Left side" /> 
+	                    
+                    <Button
+	                    android:id="@+id/buttonStep3Rightside"
+	                    android:layout_width="wrap_content"
+	                    android:layout_height="wrap_content"
+	                    android:layout_marginTop="4dp"
+	                    android:layout_weight="2"
+	                    android:textSize="14dp"
+	                    android:text="Right side" /> 
+	                    
+                </LinearLayout>
+                    
+            </RelativeLayout>
+            
+	        <Button
+	            android:id="@+id/buttonNext"
+	            android:layout_width="match_parent"
+	            android:layout_height="wrap_content"
+	            android:layout_centerHorizontal="true"
+	            android:layout_marginTop="14dp"
+	            android:gravity="center_horizontal"
+	            android:text="Next" />
+            
+        </LinearLayout>
+        
+    </ScrollView>
+    
+</LinearLayout>

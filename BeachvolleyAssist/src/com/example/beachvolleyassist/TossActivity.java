@@ -12,16 +12,12 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 
-public class SettingsActivity extends Activity implements OnClickListener {
+public class TossActivity extends Activity implements OnClickListener {
 
 	Settings mySettings;
 	
 	private Button button_Next;
 	private Button button_Cancel;
-	private EditText teamRedPlayer1;
-	private EditText teamRedPlayer2;
-	private EditText teamBluePlayer1;
-	private EditText teamBluePlayer2;
 	
 	
 	
@@ -31,7 +27,7 @@ public class SettingsActivity extends Activity implements OnClickListener {
 	    super.onCreate(savedInstanceState);
 		ActivityRegistry.register(this);
 		
-		setContentView(R.layout.settingsactivity);
+		setContentView(R.layout.tossactivity);
 		
 		mySettings = (Settings) getApplication();
 		
@@ -42,63 +38,7 @@ public class SettingsActivity extends Activity implements OnClickListener {
 		this.button_Cancel.setOnClickListener(this);
 		
 		
-		this.teamRedPlayer1 = (EditText) this.findViewById(R.id.editTextTeamRedPlayer1);
-		this.teamRedPlayer2 = (EditText) this.findViewById(R.id.editTextTeamRedPlayer2);
-		this.teamBluePlayer1 = (EditText) this.findViewById(R.id.editTextTeamBluePlayer1);
-		this.teamBluePlayer2 = (EditText) this.findViewById(R.id.editTextTeamBluePlayer2);
 		
-				
-		this.teamRedPlayer1.addTextChangedListener(new TextWatcher() {
-			 
-			public void afterTextChanged(Editable s) {
-			}
-			 
-			public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-			}
-			 
-			public void onTextChanged(CharSequence s, int start, int before, int count) {
-				mySettings.setTeamRedPlayer1(s.toString());
-			}
-	    });
-		
-		this.teamRedPlayer2.addTextChangedListener(new TextWatcher() {
-			 
-			public void afterTextChanged(Editable s) {
-			}
-			 
-			public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-			}
-			 
-			public void onTextChanged(CharSequence s, int start, int before, int count) {
-				mySettings.setTeamRedPlayer2(s.toString());
-			}
-	    });
-		
-		this.teamBluePlayer1.addTextChangedListener(new TextWatcher() {
-			 
-			public void afterTextChanged(Editable s) {
-			}
-			 
-			public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-			}
-			 
-			public void onTextChanged(CharSequence s, int start, int before, int count) {
-				mySettings.setTeamBluePlayer1(s.toString());
-			}
-	    });
-		
-		this.teamBluePlayer2.addTextChangedListener(new TextWatcher() {
-			 
-			public void afterTextChanged(Editable s) {
-			}
-			 
-			public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-			}
-			 
-			public void onTextChanged(CharSequence s, int start, int before, int count) {
-				mySettings.setTeamBluePlayer2(s.toString());
-			}
-	    });		
 	}
 
 	@Override
@@ -140,14 +80,14 @@ public class SettingsActivity extends Activity implements OnClickListener {
 		if (clicked.getId() == this.button_Next.getId()) 
 		{			
 			// new Intent
-            Intent toss_activity = new Intent(getApplicationContext(), TossActivity.class);
+            Intent main_activity = new Intent(getApplicationContext(), MainActivity.class);
 
             //Set main_activity Intent with data
             //settings_activity.putExtra("Vorname", inputVorname.getText().toString());
             //settings_activity.putExtra("Nachname", inputNachname.getText().toString());
 
             // start Intent and change to MainActivity
-            startActivity(toss_activity);
+            startActivity(main_activity);
 		}
 	}
 

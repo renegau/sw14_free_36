@@ -27,14 +27,32 @@ public final class R {
     }
     public static final class id {
         public static final int LayoutBlue=0x7f08000c;
+        public static final int LayoutLinear=0x7f080029;
+        public static final int LayoutLinearStep2=0x7f080030;
+        public static final int LayoutLinearStep3=0x7f080037;
+        public static final int LayoutLinearStep4=0x7f08003e;
         public static final int LayoutRed=0x7f080000;
-        public static final int action_settings=0x7f080028;
+        public static final int LayoutStep1=0x7f08002a;
+        public static final int LayoutStep2=0x7f08002e;
+        public static final int LayoutStep3=0x7f080035;
+        public static final int LayoutStep4=0x7f08003c;
+        public static final int action_settings=0x7f08003f;
         public static final int buttonBlue=0x7f080017;
         public static final int buttonCancel=0x7f08000d;
         public static final int buttonExit=0x7f080027;
-        public static final int buttonOk=0x7f080021;
+        public static final int buttonNext=0x7f080021;
         public static final int buttonRed=0x7f08000a;
+        public static final int buttonStep2Leftside=0x7f080033;
+        public static final int buttonStep2Return=0x7f080032;
+        public static final int buttonStep2Rightside=0x7f080034;
+        public static final int buttonStep2Service=0x7f080031;
+        public static final int buttonStep3Leftside=0x7f08003a;
+        public static final int buttonStep3Return=0x7f080039;
+        public static final int buttonStep3Rightside=0x7f08003b;
+        public static final int buttonStep3Service=0x7f080038;
         public static final int buttonStort=0x7f080026;
+        public static final int buttonTeamBlue=0x7f08002d;
+        public static final int buttonTeamRed=0x7f08002c;
         public static final int buttonTimeoutBlue=0x7f080014;
         public static final int buttonTimeoutRed=0x7f080007;
         public static final int buttonUndo=0x7f08000b;
@@ -57,8 +75,13 @@ public final class R {
         public static final int textViewAppTitle=0x7f080022;
         public static final int textViewAuthorNames=0x7f080024;
         public static final int textViewAuthors=0x7f080023;
+        public static final int textViewStep1=0x7f08002b;
+        public static final int textViewStep2=0x7f08002f;
+        public static final int textViewStep3=0x7f080036;
+        public static final int textViewStep4=0x7f08003d;
         public static final int textViewTeamBlue=0x7f08001e;
         public static final int textViewTeamRed=0x7f08001b;
+        public static final int textViewTossTitle=0x7f080028;
         public static final int viewBallBlue1=0x7f08000f;
         public static final int viewBallBlue2=0x7f080011;
         public static final int viewBallRed1=0x7f080002;
@@ -72,6 +95,7 @@ public final class R {
         public static final int mainactivity=0x7f030000;
         public static final int settingsactivity=0x7f030001;
         public static final int startactivity=0x7f030002;
+        public static final int tossactivity=0x7f030003;
     }
     public static final class menu {
         public static final int main=0x7f070000;
