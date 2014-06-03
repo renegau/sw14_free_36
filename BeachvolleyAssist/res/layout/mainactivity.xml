@@ -31,7 +31,7 @@
         android:id="@+id/viewBallRed1"
         android:layout_width="20dp"
         android:layout_height="26dp"
-        android:layout_marginLeft="0dp"
+        android:layout_marginLeft="5dp"
         android:layout_marginTop="0dp"
         android:src="@drawable/ic_launcher" />
 
@@ -43,13 +43,13 @@
         android:layout_marginTop="-25dp"
         android:gravity="center"
         android:text="Player #1"
-        android:textColor="#BDBDBD" />
+        android:textColor="#000000" />
         
     <ImageView
         android:id="@+id/viewBallRed2"
         android:layout_width="20dp"
         android:layout_height="26dp"
-        android:layout_marginLeft="0dp"
+        android:layout_marginLeft="5dp"
         android:layout_marginTop="0dp"
         android:src="@drawable/ic_launcher" />
     
@@ -61,7 +61,7 @@
         android:layout_marginTop="-25dp"
         android:gravity="center"
         android:text="Player #2" 
-        android:textColor="#BDBDBD"/>
+        android:textColor="#000000"/>
 
     <RatingBar
         android:id="@+id/ratingBarRed"
@@ -82,18 +82,18 @@
 
     <ImageView
         android:id="@+id/viewTimeoutRed1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:layout_marginLeft="40dp"
         android:layout_marginTop="-5dp"
         android:src="@drawable/ic_media_pause" />
     
     <ImageView
         android:id="@+id/viewTimeoutRed2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:layout_marginLeft="80dp"
-        android:layout_marginTop="-32dp"
+        android:layout_marginTop="-31dp"
         android:src="@drawable/ic_media_pause" />
 
     <Button
@@ -147,7 +147,7 @@
         android:id="@+id/viewBallBlue1"
         android:layout_width="20dp"
         android:layout_height="26dp"
-        android:layout_marginLeft="0dp"
+        android:layout_marginLeft="5dp"
         android:layout_marginTop="0dp"
         android:src="@drawable/ic_launcher" />
 
@@ -159,13 +159,13 @@
         android:layout_marginTop="-25dp"
         android:gravity="center"
         android:text="Player #1" 
-        android:textColor="#BDBDBD"/>
+        android:textColor="#000000"/>
     
     <ImageView
         android:id="@+id/viewBallBlue2"
         android:layout_width="20dp"
         android:layout_height="26dp"
-        android:layout_marginLeft="0dp"
+        android:layout_marginLeft="5dp"
         android:layout_marginTop="0dp"
         android:src="@drawable/ic_launcher" />
 
@@ -177,7 +177,7 @@
         android:layout_marginTop="-25dp"
         android:gravity="center"
         android:text="Player #2" 
-        android:textColor="#BDBDBD"/>
+        android:textColor="#000000"/>
     
     <RatingBar
         android:id="@+id/ratingBarBlue"
@@ -198,18 +198,18 @@
     
       <ImageView
         android:id="@+id/viewTimeoutBlue1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:layout_marginLeft="40dp"
         android:layout_marginTop="-5dp"
         android:src="@drawable/ic_media_pause" />   
     
       <ImageView
         android:id="@+id/viewTimeoutBlue2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:layout_marginLeft="80dp"
-        android:layout_marginTop="-32dp"
+        android:layout_marginTop="-31dp"
         android:src="@drawable/ic_media_pause" />
 
     <Button

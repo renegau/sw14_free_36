@@ -43,6 +43,9 @@ public class MainActivity extends Activity implements OnClickListener
 	int redSet = 0;
 	int blueSet = 0;
 	
+	boolean finish_red = false;
+	boolean finish_blue = false;
+	
 	Settings settings;
 	
 	private TextView textView_TeamBlueName;
@@ -131,7 +134,7 @@ public class MainActivity extends Activity implements OnClickListener
 		imageView_Ball2_Blue.setVisibility(View.INVISIBLE);
 		
 		rb_red  = (RatingBar) findViewById(R.id.ratingBarRed);
-		rb_blue = (RatingBar) findViewById(R.id.ratingBarBlue);
+		rb_blue = (RatingBar) findViewById(R.id.ratingBarBlue);	
 	}
 
 	@Override
@@ -161,7 +164,7 @@ public class MainActivity extends Activity implements OnClickListener
 				redSet++;
 				rb_red.setRating(redSet + 1);
 				
-				if(redSet == 2)
+				if(redSet >= 2)
 				{
 					dlgAlert.setMessage("'Team RED' win the game!");
 					dlgAlert.setTitle("Congratulation");
@@ -171,6 +174,8 @@ public class MainActivity extends Activity implements OnClickListener
 					
 					button_Red.setEnabled(false);
 					button_Blue.setEnabled(false);
+				    button_TimeoutRed.setEnabled(false);
+					button_TimeoutBlue.setEnabled(false);
 				}
 				else
 				{
@@ -181,6 +186,8 @@ public class MainActivity extends Activity implements OnClickListener
 					dlgAlert.create().show();
 					setAllNull();
 				}
+				
+				finish_red = true;
 			}
 			else if(((counterRed + counterBlue) % 7) == 0)
 			{
@@ -218,7 +225,7 @@ public class MainActivity extends Activity implements OnClickListener
 				blueSet++;
 				rb_blue.setRating(blueSet + 1);
 				
-				if(blueSet == 2)
+				if(blueSet >= 2)
 				{
 					dlgAlert.setMessage("'Team BLUE' win the game!");
 					dlgAlert.setTitle("Congratulation");
@@ -228,6 +235,8 @@ public class MainActivity extends Activity implements OnClickListener
 					
 					button_Red.setEnabled(false);
 					button_Blue.setEnabled(false);
+				    button_TimeoutRed.setEnabled(false);
+					button_TimeoutBlue.setEnabled(false);
 				}
 				else
 				{
@@ -238,6 +247,8 @@ public class MainActivity extends Activity implements OnClickListener
 					dlgAlert.create().show();
 					setAllNull();
 				}
+				
+				finish_blue = true;
 			}
 			else if(((counterRed + counterBlue) % 7) == 0)
 			{
@@ -296,17 +307,36 @@ public class MainActivity extends Activity implements OnClickListener
 		}
 		else if(clicked.getId() == this.button_Undo.getId())
 		{
-			if(red == true)
+			if(finish_red == true || finish_blue == true)
 			{
-				this.counterRed -= 1;
-				this.button_Red.setText(Integer.toString(counterRed));
-				this.red = false;
+				makeUndo();
+				
+				if(timeoutleft_red != 0)
+				{
+				   button_TimeoutRed.setEnabled(true);
+				}
+				
+				if(timeoutleft_blue != 0)
+				{
+				  button_TimeoutBlue.setEnabled(true);
+				}
+
+				button_Red.setEnabled(true);
+				button_Blue.setEnabled(true);
+				
+				if(finish_red == true)
+				{
+				  redSet--;
+				}
+				else if(finish_blue == true)
+				{
+				  blueSet--;
+				}
 			}
-			else if(blue == true)
+			else
 			{
-				this.counterBlue -= 1;
-				this.button_Blue.setText(Integer.toString(counterBlue));
-				this.blue = false;
+				makeUndo();
+				
 			}
 		}
 		else if(clicked.getId() == this.button_TimeoutRed.getId())
@@ -351,6 +381,24 @@ public class MainActivity extends Activity implements OnClickListener
 		      button_TimeoutBlue.setEnabled(false);
 			}
 		}	
+	}
+	
+	private void makeUndo()
+	{
+		if(red == true)
+		{
+			counterRed--;
+			button_Red.setText(Integer.toString(counterRed));
+			red = false;
+		}
+		else if(blue == true)
+		{
+			counterBlue--;
+			button_Blue.setText(Integer.toString(counterBlue));
+			blue = false;
+		}
+		finish_red = false;
+		finish_blue = false;
 	}
 	
 	private void setAllNull() 
