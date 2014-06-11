@@ -68,6 +68,9 @@
         android:layout_width="100dp"
         android:layout_marginLeft="30dp"
         android:layout_height="wrap_content"
+        android:numStars="2"
+        android:stepSize="1.0"
+        android:rating="0.0"
         android:isIndicator="true" />
     
     <Button
@@ -184,6 +187,9 @@
         android:layout_width="100dp"
         android:layout_marginLeft="30dp"
         android:layout_height="wrap_content"
+        android:numStars="2"
+        android:stepSize="1.0"
+        android:rating="0.0"
         android:isIndicator="true" />
 
     <Button

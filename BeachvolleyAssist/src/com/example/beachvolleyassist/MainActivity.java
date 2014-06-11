@@ -46,6 +46,8 @@ public class MainActivity extends Activity implements OnClickListener
 	boolean finish_red = false;
 	boolean finish_blue = false;
 	
+	boolean switched = false;
+	
 	Settings settings;
 	
 	private TextView textView_TeamBlueName;
@@ -156,13 +158,14 @@ public class MainActivity extends Activity implements OnClickListener
 		{
 			this.counterRed += 1;
 			this.button_Red.setText(Integer.toString(counterRed));
+			switched = false;
 			
 			this.red = true;
 			
 			if(counterRed >= 21 && counterBlue < (counterRed - 1))
 			{
 				redSet++;
-				rb_red.setRating(redSet + 1);
+				rb_red.setRating(redSet);
 				
 				if(redSet >= 2)
 				{
@@ -223,7 +226,8 @@ public class MainActivity extends Activity implements OnClickListener
 			if(counterBlue >= 21 && counterRed < (counterBlue - 1))
 			{					
 				blueSet++;
-				rb_blue.setRating(blueSet + 1);
+				rb_blue.setRating(blueSet);
+				switched = false;
 				
 				if(blueSet >= 2)
 				{
@@ -397,6 +401,12 @@ public class MainActivity extends Activity implements OnClickListener
 			button_Blue.setText(Integer.toString(counterBlue));
 			blue = false;
 		}
+		
+		if(switched == true)
+		{
+		  changeLayout();
+		}
+		
 		finish_red = false;
 		finish_blue = false;
 	}
@@ -446,7 +456,9 @@ public class MainActivity extends Activity implements OnClickListener
 	  layout_red.setX(blue_x);
 	  layout_red.setY(blue_y);
 	  layout_blue.setX(red_x);
-      layout_blue.setY(red_y);     
+      layout_blue.setY(red_y);
+      
+      switched = true;
 	}
 	
 	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
