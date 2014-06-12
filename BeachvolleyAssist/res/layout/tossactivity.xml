@@ -241,40 +241,40 @@
 		            android:layout_below="@+id/textViewStep4" >
 		            
                     <Button
-	                    android:id="@+id/buttonStep3Service"
+	                    android:id="@+id/buttonPlayerRed1"
 	                    android:layout_width="wrap_content"
 	                    android:layout_height="wrap_content"
 	                    android:layout_marginTop="4dp"
 	                    android:layout_weight="1"
 	                    android:textSize="14dp"
-	                    android:text="Service" />
+	                    android:text="Player Red 1" />
                     
                     <Button
-	                    android:id="@+id/buttonStep3Return"
+	                    android:id="@+id/buttonPlayerRed2"
 	                    android:layout_width="wrap_content"
 	                    android:layout_height="wrap_content"
 	                    android:layout_marginTop="4dp"
 	                    android:layout_weight="1"
 	                    android:textSize="14dp"
-	                    android:text="Return" /> 
+	                    android:text="Player Red 2" /> 
 	                    
                     <Button
-	                    android:id="@+id/buttonStep3Leftside"
+	                    android:id="@+id/buttonPlayerBlue1"
 	                    android:layout_width="wrap_content"
 	                    android:layout_height="wrap_content"
 	                    android:layout_marginTop="4dp"
 	                    android:layout_weight="2"
 	                    android:textSize="14dp"
-	                    android:text="Left side" /> 
+	                    android:text="Player Blue 1" /> 
 	                    
                     <Button
-	                    android:id="@+id/buttonStep3Rightside"
+	                    android:id="@+id/buttonPlayerBlue2"
 	                    android:layout_width="wrap_content"
 	                    android:layout_height="wrap_content"
 	                    android:layout_marginTop="4dp"
 	                    android:layout_weight="2"
 	                    android:textSize="14dp"
-	                    android:text="Right side" /> 
+	                    android:text="Player Blue 2" /> 
 	                    
                 </LinearLayout>
                     

@@ -339,8 +339,7 @@ public class MainActivity extends Activity implements OnClickListener
 			}
 			else
 			{
-				makeUndo();
-				
+				makeUndo();	
 			}
 		}
 		else if(clicked.getId() == this.button_TimeoutRed.getId())
