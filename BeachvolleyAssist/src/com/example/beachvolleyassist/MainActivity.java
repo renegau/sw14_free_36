@@ -1,5 +1,8 @@
 package com.example.beachvolleyassist;
 
+import com.example.beachvolleyassist.Settings.Player;
+import com.example.beachvolleyassist.Settings.Team;
+
 import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -48,7 +51,7 @@ public class MainActivity extends Activity implements OnClickListener
 	
 	boolean switched = false;
 	
-	Settings settings;
+	Settings mySettings;
 	
 	private TextView textView_TeamBlueName;
 	private TextView textView_TeamRedName;
@@ -70,11 +73,6 @@ public class MainActivity extends Activity implements OnClickListener
 	private RatingBar rb_blue;
 	private RatingBar rb_red;
 	
-	public enum Team
-	{
-	  RED, BLUE
-	}
-	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) 
 	{
@@ -83,7 +81,7 @@ public class MainActivity extends Activity implements OnClickListener
 		
 		setContentView(R.layout.mainactivity);
 		
-		settings = (Settings) getApplication();
+		mySettings = (Settings) getApplication();
 		
 		this.button_Red = (Button) this.findViewById(R.id.buttonRed);
 		this.button_Blue = (Button) this.findViewById(R.id.buttonBlue);
@@ -103,22 +101,22 @@ public class MainActivity extends Activity implements OnClickListener
 		this.button_TimeoutBlue.setOnClickListener(this);
 		
 		textView_TeamBlueName = (TextView) this.findViewById(R.id.textTeamBlueName);
-		textView_TeamBlueName.setText(settings.getTeamBlueName());
+		textView_TeamBlueName.setText(mySettings.getTeamBlueName());
 		
 		textView_TeamRedName = (TextView) this.findViewById(R.id.textTeamRedName);
-		textView_TeamRedName.setText(settings.getTeamRedName());
+		textView_TeamRedName.setText(mySettings.getTeamRedName());
 		
 		textView_TeamBluePlayer1 = (TextView) this.findViewById(R.id.textPlayer1Blue);
-		textView_TeamBluePlayer1.setText(settings.getTeamBluePlayer1());
+		textView_TeamBluePlayer1.setText(mySettings.getTeamBluePlayer1());
 		
 		textView_TeamBluePlayer2 = (TextView) this.findViewById(R.id.textPlayer2Blue);
-		textView_TeamBluePlayer2.setText(settings.getTeamBluePlayer2());
+		textView_TeamBluePlayer2.setText(mySettings.getTeamBluePlayer2());
 		
 		textView_TeamRedPlayer1 = (TextView) this.findViewById(R.id.textPlayer1Red);
-		textView_TeamRedPlayer1.setText(settings.getTeamRedPlayer1());
+		textView_TeamRedPlayer1.setText(mySettings.getTeamRedPlayer1());
 		
 		textView_TeamRedPlayer2 = (TextView) this.findViewById(R.id.textPlayer2Red);
-		textView_TeamRedPlayer2.setText(settings.getTeamRedPlayer2());
+		textView_TeamRedPlayer2.setText(mySettings.getTeamRedPlayer2());
 		
 		imageView_Timeout1_Red = (ImageView) findViewById(R.id.viewTimeoutRed1);
 		imageView_Timeout2_Red = (ImageView) findViewById(R.id.viewTimeoutRed2);
@@ -137,6 +135,72 @@ public class MainActivity extends Activity implements OnClickListener
 		
 		rb_red  = (RatingBar) findViewById(R.id.ratingBarRed);
 		rb_blue = (RatingBar) findViewById(R.id.ratingBarBlue);	
+		
+		
+		
+		/*AlertDialog.Builder dlgAlert  = new AlertDialog.Builder(this);
+		
+		if (mySettings.getBeginningSideLeft() == Team.RED) {
+			dlgAlert.setMessage("Beginning side left = RED");
+		}
+		if (mySettings.getBeginningSideLeft() == Team.BLUE) {
+			dlgAlert.setMessage("Beginning side left = BLUE");
+		}
+		dlgAlert.setPositiveButton("OK", null);
+		dlgAlert.setCancelable(true);
+		dlgAlert.create().show();
+		*/
+		
+		if (mySettings.getBeginningSideLeft() == Team.BLUE)
+		{	
+			//changeLayoutDialoge();
+			changeLayout(); // funktioniert nicht !!!
+		}
+		
+		
+		if (mySettings.getFirstServiceTeam() == Team.RED)
+		{
+			ball_red = true;
+		    ball_blue = false;
+		    
+		    if (mySettings.getFirstServicePlayerRed() == Player.ONE)
+		    {
+		    	imageView_Ball1_Red.setVisibility(View.VISIBLE);
+				imageView_Ball2_Red.setVisibility(View.INVISIBLE);
+				imageView_Ball1_Blue.setVisibility(View.INVISIBLE);
+				imageView_Ball2_Blue.setVisibility(View.INVISIBLE);
+		    }
+		    else
+		    {
+		    	imageView_Ball1_Red.setVisibility(View.INVISIBLE);
+				imageView_Ball2_Red.setVisibility(View.VISIBLE);
+				imageView_Ball1_Blue.setVisibility(View.INVISIBLE);
+				imageView_Ball2_Blue.setVisibility(View.INVISIBLE);
+		    }
+		    
+		}
+		else // First service -> Team.BLUE
+		{
+			ball_blue = true;
+			ball_red = false;
+			
+			if (mySettings.getFirstServicePlayerBlue() == Player.ONE)
+		    {
+		    	imageView_Ball1_Red.setVisibility(View.INVISIBLE);
+				imageView_Ball2_Red.setVisibility(View.INVISIBLE);
+				imageView_Ball1_Blue.setVisibility(View.VISIBLE);
+				imageView_Ball2_Blue.setVisibility(View.INVISIBLE);
+		    }
+		    else
+		    {
+		    	imageView_Ball1_Red.setVisibility(View.INVISIBLE);
+				imageView_Ball2_Red.setVisibility(View.INVISIBLE);
+				imageView_Ball1_Blue.setVisibility(View.INVISIBLE);
+				imageView_Ball2_Blue.setVisibility(View.VISIBLE);
+		    }
+		}
+		
+		
 	}
 
 	@Override
@@ -194,6 +258,7 @@ public class MainActivity extends Activity implements OnClickListener
 			}
 			else if(((counterRed + counterBlue) % 7) == 0)
 			{
+				changeLayoutDialoge();
 				changeLayout();
 			}
 			
@@ -256,6 +321,7 @@ public class MainActivity extends Activity implements OnClickListener
 			}
 			else if(((counterRed + counterBlue) % 7) == 0)
 			{
+				changeLayoutDialoge();
 				changeLayout();
 			}
 			
@@ -403,7 +469,8 @@ public class MainActivity extends Activity implements OnClickListener
 		
 		if(switched == true)
 		{
-		  changeLayout();
+		    changeLayoutDialoge();
+		    changeLayout();
 		}
 		
 		finish_red = false;
@@ -436,8 +503,7 @@ public class MainActivity extends Activity implements OnClickListener
 	  imageView_Timeout2_Blue.setImageResource(R.drawable.ic_media_pause);
 	}
 
-	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
-	private void changeLayout()
+	private void changeLayoutDialoge()
 	{
 	  AlertDialog.Builder dlgAlert  = new AlertDialog.Builder(this);
 	  
@@ -446,7 +512,12 @@ public class MainActivity extends Activity implements OnClickListener
 	  dlgAlert.setCancelable(false);
 	  
 	  dlgAlert.create().show();
-	  
+	}
+	
+	
+	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
+	private void changeLayout()
+	{ 
   	  float red_x = layout_red.getX();
 	  float red_y = layout_red.getY();
 	  float blue_x = layout_blue.getX();

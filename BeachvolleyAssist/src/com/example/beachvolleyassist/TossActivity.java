@@ -2,6 +2,9 @@ package com.example.beachvolleyassist;
 
 import java.util.Random;
 
+import com.example.beachvolleyassist.Settings.Player;
+import com.example.beachvolleyassist.Settings.Team;
+
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -15,7 +18,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 public class TossActivity extends Activity implements OnClickListener {
-
+	
 	Settings mySettings;
 	
 	private Button button_Next;
@@ -201,11 +204,7 @@ public class TossActivity extends Activity implements OnClickListener {
 		{			
 			// new Intent
             Intent main_activity = new Intent(getApplicationContext(), MainActivity.class);
-
-            //Set main_activity Intent with data
-            //settings_activity.putExtra("Vorname", inputVorname.getText().toString());
-            //settings_activity.putExtra("Nachname", inputNachname.getText().toString());
-
+            
             // start Intent and change to MainActivity
             startActivity(main_activity);
 		}
@@ -222,11 +221,12 @@ public class TossActivity extends Activity implements OnClickListener {
 			
 			if(winner_red == true)
 			{
-			  mySettings.setServiceRed(true);
+			  // mySettings.setServiceRed(true);
+			  mySettings.setFirstServiceTeam(Team.RED);
 			}
 			else if(winner_blue == true)
 			{
-			  mySettings.setServiceRed(false);
+				mySettings.setFirstServiceTeam(Team.BLUE);
 			}
 		}
 		
@@ -242,11 +242,14 @@ public class TossActivity extends Activity implements OnClickListener {
 			
 			if(winner_red == true)
 			{
-			  mySettings.setReturnRed(true);
+			  //mySettings.setReturnRed(true);
+			  mySettings.setFirstServiceTeam(Team.BLUE);
+			  
 			}
 			else if(winner_blue == true)
 			{
-			  mySettings.setReturnRed(false);
+			  //mySettings.setReturnRed(false);
+			  mySettings.setFirstServiceTeam(Team.RED);
 			}
 		}
 		
@@ -262,11 +265,16 @@ public class TossActivity extends Activity implements OnClickListener {
 			
 			if(winner_red == true)
 			{
-			  mySettings.setLeftSideRed(true);
+			  //mySettings.setLeftSideRed(true);
+			  mySettings.setBeginningSideLeft(Team.RED);
+			  mySettings.setBeginningSideRight(Team.BLUE);
+			  
 			}
 			else if(winner_blue == true)
 			{
-			  mySettings.setLeftSideRed(false);
+			  //mySettings.setLeftSideRed(false);
+				mySettings.setBeginningSideLeft(Team.BLUE);
+				mySettings.setBeginningSideRight(Team.RED);
 			}
 		}
 		
@@ -282,11 +290,15 @@ public class TossActivity extends Activity implements OnClickListener {
 
 			if(winner_red == true)
 			{
-			  mySettings.setRightSideRed(true);
+			  //mySettings.setRightSideRed(true);
+				mySettings.setBeginningSideRight(Team.RED);
+				mySettings.setBeginningSideLeft(Team.BLUE);
 			}
 			else if(winner_blue == true)
 			{
-			  mySettings.setRightSideRed(false);
+			  //mySettings.setRightSideRed(false);
+				mySettings.setBeginningSideRight(Team.BLUE);
+				mySettings.setBeginningSideLeft(Team.RED);
 			}
 		}
 		
@@ -298,11 +310,13 @@ public class TossActivity extends Activity implements OnClickListener {
 			
 			if(winner_red == true)
 			{
-			  mySettings.setServiceRed(true);
+			  //mySettings.setServiceRed(true);
+			  mySettings.setFirstServiceTeam(Team.RED);
 			}
 			else if(winner_blue == true)
 			{
-			  mySettings.setServiceRed(false);
+			  //mySettings.setServiceRed(false);
+				mySettings.setFirstServiceTeam(Team.BLUE);
 			}
 		}
 		
@@ -314,11 +328,13 @@ public class TossActivity extends Activity implements OnClickListener {
 			
 			if(winner_red == true)
 			{
-			  mySettings.setReturnRed(true);
+			  //mySettings.setReturnRed(true);
+				mySettings.setFirstServiceTeam(Team.RED);
 			}
 			else if(winner_blue == true)
 			{
-			  mySettings.setReturnRed(false);
+			  //mySettings.setReturnRed(false);
+				mySettings.setFirstServiceTeam(Team.BLUE);
 			}
 		}
 		
@@ -330,11 +346,15 @@ public class TossActivity extends Activity implements OnClickListener {
 			
 			if(winner_red == true)
 			{
-			  mySettings.setLeftSideRed(true);
+			  //mySettings.setLeftSideRed(true);
+			  mySettings.setBeginningSideLeft(Team.RED);
+		      mySettings.setBeginningSideRight(Team.BLUE);
 			}
 			else if(winner_blue == true)
 			{
-			  mySettings.setLeftSideRed(false);
+			  //mySettings.setLeftSideRed(false);
+			  mySettings.setBeginningSideLeft(Team.BLUE);
+		      mySettings.setBeginningSideRight(Team.RED);
 			}
 		}
 		
@@ -346,39 +366,47 @@ public class TossActivity extends Activity implements OnClickListener {
 			
 			if(winner_red == true)
 			{
-			  mySettings.setRightSideRed(true);
+			  //mySettings.setRightSideRed(true);
+			  mySettings.setBeginningSideRight(Team.RED);
+			  mySettings.setBeginningSideLeft(Team.BLUE);
 			}
 			else if(winner_blue == true)
 			{
-			  mySettings.setRightSideRed(false);
+			  //mySettings.setRightSideRed(false);
+			  mySettings.setBeginningSideRight(Team.BLUE);
+			  mySettings.setBeginningSideLeft(Team.RED);
 			}
 		}
 		
 		else if (clicked.getId() == this.button_PlayerRed1.getId()) 
 		{
 			this.button_PlayerRed2.setEnabled(false);
-			mySettings.setServicePlayer1_red(true);
+			//mySettings.setServicePlayer1_red(true);
+			mySettings.setFirstServicePlayerRed(Player.ONE);
 			this.button_PlayerRed2.setClickable(false);
 		}
 		
 		else if (clicked.getId() == this.button_PlayerRed2.getId()) 
 		{
 			this.button_PlayerRed1.setEnabled(false);
-			mySettings.setServicePlayer2_red(true);
+			//mySettings.setServicePlayer2_red(true);
+			mySettings.setFirstServicePlayerRed(Player.TWO);
 			this.button_PlayerRed2.setClickable(false);
 		}
 		
 		else if (clicked.getId() == this.button_PlayerBlue1.getId()) 
 		{
 			this.button_PlayerBlue2.setEnabled(false);
-			mySettings.setServicePlayer1_red(false);
+			//mySettings.setServicePlayer1_red(false);
+			mySettings.setFirstServicePlayerBlue(Player.ONE);
 			this.button_PlayerBlue1.setClickable(false);
 		}
 		
 		else if (clicked.getId() == this.button_PlayerBlue2.getId()) 
 		{
 			this.button_PlayerBlue1.setEnabled(false);
-			mySettings.setServicePlayer2_red(false);
+			//mySettings.setServicePlayer2_red(false);
+			mySettings.setFirstServicePlayerBlue(Player.TWO);
 			this.button_PlayerBlue2.setClickable(false);
 		}
 	}

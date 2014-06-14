@@ -4,6 +4,16 @@ import android.app.Application;
 
 public class Settings extends Application {
 
+	public static enum Team
+	{
+	  RED, BLUE
+	}
+	
+	public static enum Player
+	{
+	  ONE, TWO
+	}
+	
 	private String _teamBlueName    = "Team BLUE";
 	private String _teamRedName     = "Team RED";
 	
@@ -13,13 +23,11 @@ public class Settings extends Application {
 	private String _teamRedPlayer1  = "Player 1";
 	private String _teamRedPlayer2  = "Player 2";
 	
-	private boolean _service_red = false;
-	private boolean _return_red = false;
-	private boolean _leftside_red = false;
-	private boolean _rightside_red = false;
-	
-	private boolean _service_player1_red = false;
-	private boolean _service_player2_red = false;
+	private Team _firstServiceTeam;
+	private Player _firstServicePlayerRed;
+	private Player _firstServicePlayerBlue;
+	private Team _beginningSideRight;
+	private Team _beginningSideLeft;
 	
 	public void onCreate(){
         super.onCreate();
@@ -49,28 +57,24 @@ public class Settings extends Application {
 		this._teamRedPlayer2 = name;
 	}
 	
-	public void setServiceRed(boolean service) {
-		this._service_red = service;
+	public void setFirstServiceTeam(Team team) {
+		this._firstServiceTeam = team;
 	}
 	
-	public void setReturnRed(boolean return_) {
-		this._return_red = return_;
+	public void setFirstServicePlayerRed(Player player) {
+		this._firstServicePlayerRed = player;
 	}
 	
-	public void setLeftSideRed(boolean leftside) {
-		this._leftside_red = leftside;
+	public void setFirstServicePlayerBlue(Player player) {
+		this._firstServicePlayerBlue = player;
 	}
 	
-	public void setRightSideRed(boolean rightside) {
-		this._rightside_red = rightside;
+	public void setBeginningSideLeft(Team team) {
+		this._beginningSideLeft = team;
 	}
 	
-	public void setServicePlayer1_red(boolean service_1) {
-		this._service_player1_red = service_1;
-	}
-	
-	public void setServicePlayer2_red(boolean service_2) {
-		this._service_player2_red = service_2;
+	public void setBeginningSideRight(Team team) {
+		this._beginningSideRight = team;
 	}
 	
 	
@@ -98,29 +102,25 @@ public class Settings extends Application {
 		return this._teamRedPlayer2;
 	}
 	
-	public boolean getServiceRed() {
-		return this._service_red;
+	public Team getFirstServiceTeam() {
+		return this._firstServiceTeam;
 	}
 	
-	public boolean getReturnRed() {
-		return this._return_red;
+	public Player getFirstServicePlayerRed() {
+		return this._firstServicePlayerRed;
 	}
 	
-	public boolean getLeftSideRed() {
-		return this._leftside_red;
+	public Player getFirstServicePlayerBlue() {
+		return this._firstServicePlayerBlue;
 	}
 	
-	public boolean getRightSideRed() {
-		return this._rightside_red;
+	public Team getBeginningSideLeft() {
+		return this._beginningSideLeft;
 	}
 	
-	public boolean getServicePlayer1_red() {
-		return this._service_player1_red;
-	}
-	
-	public boolean getServicePlayer2_red() {
-		return this._service_player2_red;
-	}
+	public Team getBeginningSideRight() {
+		return this._beginningSideRight;
+	}	
 	
 }
 
