@@ -461,6 +461,14 @@ public class TossTest extends ActivityInstrumentationTestCase2<TossActivity> {
 		mySolo.getText("Do you really want to cancel the game settings?");
 	}
 
+	public void testButtonUndo()
+	{	
+		mySolo.clickOnView(mySolo.getView(R.id.buttonUndo));
+		mySolo.getText("Undo");
+		
+		// TODO
+		assertTrue(false);
+	}
 
 	private void waitForRandom()
 	{
