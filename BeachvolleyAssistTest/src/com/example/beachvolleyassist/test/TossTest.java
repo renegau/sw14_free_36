@@ -1,7 +1,5 @@
 package com.example.beachvolleyassist.test;
 
-import junit.framework.Assert;
-
 import com.example.beachvolleyassist.Settings;
 import com.example.beachvolleyassist.TossActivity;
 import com.example.beachvolleyassist.R;
@@ -16,7 +14,6 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.test.ActivityInstrumentationTestCase2;
 import android.view.View;
-import android.widget.Button;
 
 
 @TargetApi(Build.VERSION_CODES.HONEYCOMB)

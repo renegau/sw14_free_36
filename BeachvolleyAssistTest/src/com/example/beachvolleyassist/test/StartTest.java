@@ -4,10 +4,7 @@ import com.example.beachvolleyassist.StartActivity;
 import com.example.beachvolleyassist.R;
 import com.robotium.solo.Solo;
 
-import android.annotation.TargetApi;
-import android.os.Build;
 import android.test.ActivityInstrumentationTestCase2;
-import android.widget.LinearLayout;
 
 public class StartTest extends ActivityInstrumentationTestCase2<StartActivity> {
 	

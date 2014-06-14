@@ -8,11 +8,8 @@ import com.example.beachvolleyassist.R;
 import com.robotium.solo.Solo;
 
 import android.app.Activity;
-import android.annotation.TargetApi;
-import android.os.Build;
 import android.test.ActivityInstrumentationTestCase2;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 
 public class SettingsTest extends ActivityInstrumentationTestCase2<SettingsActivity> {
 	
