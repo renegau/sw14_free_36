@@ -6,6 +6,7 @@ import com.example.beachvolleyassist.Settings.Team;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.view.Menu;
@@ -40,14 +41,17 @@ public class MainActivity extends Activity implements OnClickListener
 	int timeoutleft_red = 2;
 	int timeoutleft_blue = 2;
 	
-	boolean ball_red = true;
-	boolean ball_blue = true;
+	boolean ball_red_player1 = true;
+	boolean ball_blue_player1 = true;
 	
 	int redSet = 0;
 	int blueSet = 0;
 	
 	boolean finish_red = false;
 	boolean finish_blue = false;
+	
+	boolean first_service_red = true;
+	boolean first_service_blue = true;
 	
 	boolean switched = false;
 	
@@ -73,7 +77,6 @@ public class MainActivity extends Activity implements OnClickListener
 	private RatingBar rb_blue;
 	private RatingBar rb_red;
 	
-	@Override
 	protected void onCreate(Bundle savedInstanceState) 
 	{
 		super.onCreate(savedInstanceState);
@@ -135,40 +138,26 @@ public class MainActivity extends Activity implements OnClickListener
 		
 		rb_red  = (RatingBar) findViewById(R.id.ratingBarRed);
 		rb_blue = (RatingBar) findViewById(R.id.ratingBarBlue);	
-		
-		
-		
-		/*AlertDialog.Builder dlgAlert  = new AlertDialog.Builder(this);
-		
-		if (mySettings.getBeginningSideLeft() == Team.RED) {
-			dlgAlert.setMessage("Beginning side left = RED");
-		}
-		if (mySettings.getBeginningSideLeft() == Team.BLUE) {
-			dlgAlert.setMessage("Beginning side left = BLUE");
-		}
-		dlgAlert.setPositiveButton("OK", null);
-		dlgAlert.setCancelable(true);
-		dlgAlert.create().show();
-		*/
-		
+	      
 		if (mySettings.getBeginningSideLeft() == Team.BLUE)
 		{	
-			//changeLayoutDialoge();
-			changeLayout(); // funktioniert nicht !!!
+			changeLayoutStart();
 		}
-		
+		else if(mySettings.getBeginningSideRight() == Team.RED)
+		{
+			changeLayoutStart();
+		}
 		
 		if (mySettings.getFirstServiceTeam() == Team.RED)
 		{
-			ball_red = true;
-		    ball_blue = false;
-		    
 		    if (mySettings.getFirstServicePlayerRed() == Player.ONE)
 		    {
 		    	imageView_Ball1_Red.setVisibility(View.VISIBLE);
 				imageView_Ball2_Red.setVisibility(View.INVISIBLE);
 				imageView_Ball1_Blue.setVisibility(View.INVISIBLE);
 				imageView_Ball2_Blue.setVisibility(View.INVISIBLE);
+				
+				ball_red_player1 = true;
 		    }
 		    else
 		    {
@@ -176,20 +165,21 @@ public class MainActivity extends Activity implements OnClickListener
 				imageView_Ball2_Red.setVisibility(View.VISIBLE);
 				imageView_Ball1_Blue.setVisibility(View.INVISIBLE);
 				imageView_Ball2_Blue.setVisibility(View.INVISIBLE);
+				
+				ball_red_player1 = false;
 		    }
 		    
 		}
 		else // First service -> Team.BLUE
 		{
-			ball_blue = true;
-			ball_red = false;
-			
 			if (mySettings.getFirstServicePlayerBlue() == Player.ONE)
 		    {
 		    	imageView_Ball1_Red.setVisibility(View.INVISIBLE);
 				imageView_Ball2_Red.setVisibility(View.INVISIBLE);
 				imageView_Ball1_Blue.setVisibility(View.VISIBLE);
 				imageView_Ball2_Blue.setVisibility(View.INVISIBLE);
+				
+				ball_blue_player1 = true;
 		    }
 		    else
 		    {
@@ -197,10 +187,10 @@ public class MainActivity extends Activity implements OnClickListener
 				imageView_Ball2_Red.setVisibility(View.INVISIBLE);
 				imageView_Ball1_Blue.setVisibility(View.INVISIBLE);
 				imageView_Ball2_Blue.setVisibility(View.VISIBLE);
+				
+				ball_blue_player1 = false;
 		    }
-		}
-		
-		
+		}	
 	}
 
 	@Override
@@ -254,6 +244,8 @@ public class MainActivity extends Activity implements OnClickListener
 					setAllNull();
 				}
 				
+				first_service_red = true;
+				first_service_blue = true;
 				finish_red = true;
 			}
 			else if(((counterRed + counterBlue) % 7) == 0)
@@ -262,23 +254,37 @@ public class MainActivity extends Activity implements OnClickListener
 				changeLayout();
 			}
 			
-			if(ball_red == true)
+			if(ball_red_player1 == true)
 			{
-		      imageView_Ball1_Red.setVisibility(View.VISIBLE);
-			  imageView_Ball2_Red.setVisibility(View.INVISIBLE);
-			  imageView_Ball1_Blue.setVisibility(View.INVISIBLE);
-			  imageView_Ball2_Blue.setVisibility(View.INVISIBLE);
+		        imageView_Ball1_Red.setVisibility(View.VISIBLE);
+			    imageView_Ball2_Red.setVisibility(View.INVISIBLE);
+			    imageView_Ball1_Blue.setVisibility(View.INVISIBLE);
+			    imageView_Ball2_Blue.setVisibility(View.INVISIBLE);
 			  
-			  ball_blue = true;
+			    if(first_service_red == true)
+			    {
+			      first_service_red = false;
+			    }
+			    else
+			    {
+			      ball_blue_player1 = true;
+			    }
 			}
-			else if(ball_red == false)
+			else if(ball_red_player1 == false)
 			{
-		      imageView_Ball2_Red.setVisibility(View.VISIBLE);
-			  imageView_Ball1_Red.setVisibility(View.INVISIBLE);
-			  imageView_Ball1_Blue.setVisibility(View.INVISIBLE);
-			  imageView_Ball2_Blue.setVisibility(View.INVISIBLE);
+		        imageView_Ball2_Red.setVisibility(View.VISIBLE);
+			    imageView_Ball1_Red.setVisibility(View.INVISIBLE);
+			    imageView_Ball1_Blue.setVisibility(View.INVISIBLE);
+			    imageView_Ball2_Blue.setVisibility(View.INVISIBLE);
 			  
-			  ball_blue = false;
+			    if(first_service_red == true)
+			    {
+			      first_service_red = false;
+			    }
+			    else
+			    {
+			      ball_blue_player1 = true;
+			    }
 			}
 		} 
 		else if (clicked.getId() == this.button_Blue.getId())
@@ -318,30 +324,46 @@ public class MainActivity extends Activity implements OnClickListener
 				}
 				
 				finish_blue = true;
-			}
-			else if(((counterRed + counterBlue) % 7) == 0)
-			{
+				first_service_red = true;
+				first_service_blue = true;
+			  }
+			  else if(((counterRed + counterBlue) % 7) == 0)
+			  {
 				changeLayoutDialoge();
 				changeLayout();
-			}
+			  }
 			
-			if(ball_blue == true)
+			if(ball_blue_player1 == true)
 			{
 		      imageView_Ball1_Blue.setVisibility(View.VISIBLE);
 			  imageView_Ball1_Red.setVisibility(View.INVISIBLE);
 			  imageView_Ball2_Red.setVisibility(View.INVISIBLE);
 			  imageView_Ball2_Blue.setVisibility(View.INVISIBLE);
 			  
-			  ball_red = false;
+			  if(first_service_blue == true)
+			  {
+		        first_service_blue = false;
+			  }
+			  else
+			  {
+			    ball_red_player1 = false;
+			  }
 			}
-			else if(ball_blue == false)
+			else if(ball_blue_player1 == false)
 			{
 		      imageView_Ball2_Blue.setVisibility(View.VISIBLE);
 			  imageView_Ball1_Red.setVisibility(View.INVISIBLE);
 			  imageView_Ball2_Red.setVisibility(View.INVISIBLE);
 			  imageView_Ball1_Blue.setVisibility(View.INVISIBLE);
 			  
-			  ball_red = true;
+			  if(first_service_blue == true)
+			  {
+			    first_service_blue = false;
+			  }
+			  else
+			  {
+			    ball_red_player1 = true;
+			  }
 			}
 		}
 		else if(clicked.getId() == this.button_Cancel.getId())
@@ -488,8 +510,8 @@ public class MainActivity extends Activity implements OnClickListener
 	  timeoutleft_red = 2;
 	  timeoutleft_blue = 2;
 		
-	  ball_red = true;
-      ball_blue = true;
+	  ball_red_player1 = true;
+      ball_blue_player1 = true;
 	  
 	  button_Blue.setText(Integer.toString(counterBlue));
 	  button_Red.setText(Integer.toString(counterRed));
@@ -503,6 +525,16 @@ public class MainActivity extends Activity implements OnClickListener
 	  imageView_Timeout2_Blue.setImageResource(R.drawable.ic_media_pause);
 	}
 
+	@SuppressLint("NewApi")
+	private void changeLayoutStart() 
+	{
+	  layout_red.setX(240);
+	  layout_red.setY(0);
+		
+	  layout_blue.setX(-240);
+	  layout_blue.setY(0);
+	}
+	
 	private void changeLayoutDialoge()
 	{
 	  AlertDialog.Builder dlgAlert  = new AlertDialog.Builder(this);
@@ -514,8 +546,7 @@ public class MainActivity extends Activity implements OnClickListener
 	  dlgAlert.create().show();
 	}
 	
-	
-	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
+	@SuppressLint("NewApi")
 	private void changeLayout()
 	{ 
   	  float red_x = layout_red.getX();
