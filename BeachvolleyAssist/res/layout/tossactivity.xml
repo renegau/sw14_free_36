@@ -247,6 +247,7 @@
 	                    android:layout_marginTop="4dp"
 	                    android:layout_weight="1"
 	                    android:textSize="14dp"
+	                    android:background="#66ff0000"
 	                    android:text="Player Red 1" />
                     
                     <Button
@@ -256,6 +257,7 @@
 	                    android:layout_marginTop="4dp"
 	                    android:layout_weight="1"
 	                    android:textSize="14dp"
+	                    android:background="#66ff0000"
 	                    android:text="Player Red 2" /> 
 	                    
                     <Button
@@ -265,6 +267,7 @@
 	                    android:layout_marginTop="4dp"
 	                    android:layout_weight="2"
 	                    android:textSize="14dp"
+	                    android:background="#8858ACFA"
 	                    android:text="Player Blue 1" /> 
 	                    
                     <Button
@@ -274,6 +277,7 @@
 	                    android:layout_marginTop="4dp"
 	                    android:layout_weight="2"
 	                    android:textSize="14dp"
+	                    android:background="#8858ACFA"
 	                    android:text="Player Blue 2" /> 
 	                    
                 </LinearLayout>

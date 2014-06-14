@@ -311,12 +311,12 @@ public class TossActivity extends Activity implements OnClickListener {
 			if(winner_red == true)
 			{
 			  //mySettings.setServiceRed(true);
-			  mySettings.setFirstServiceTeam(Team.RED);
+			  mySettings.setFirstServiceTeam(Team.BLUE);
 			}
 			else if(winner_blue == true)
 			{
 			  //mySettings.setServiceRed(false);
-				mySettings.setFirstServiceTeam(Team.BLUE);
+				mySettings.setFirstServiceTeam(Team.RED);
 			}
 		}
 		
@@ -347,14 +347,14 @@ public class TossActivity extends Activity implements OnClickListener {
 			if(winner_red == true)
 			{
 			  //mySettings.setLeftSideRed(true);
-			  mySettings.setBeginningSideLeft(Team.RED);
-		      mySettings.setBeginningSideRight(Team.BLUE);
+			  mySettings.setBeginningSideLeft(Team.BLUE);
+		      mySettings.setBeginningSideRight(Team.RED);
 			}
 			else if(winner_blue == true)
 			{
 			  //mySettings.setLeftSideRed(false);
-			  mySettings.setBeginningSideLeft(Team.BLUE);
-		      mySettings.setBeginningSideRight(Team.RED);
+			  mySettings.setBeginningSideLeft(Team.RED);
+		      mySettings.setBeginningSideRight(Team.BLUE);
 			}
 		}
 		
@@ -367,14 +367,14 @@ public class TossActivity extends Activity implements OnClickListener {
 			if(winner_red == true)
 			{
 			  //mySettings.setRightSideRed(true);
-			  mySettings.setBeginningSideRight(Team.RED);
-			  mySettings.setBeginningSideLeft(Team.BLUE);
+			  mySettings.setBeginningSideRight(Team.BLUE);
+			  mySettings.setBeginningSideLeft(Team.RED);
 			}
 			else if(winner_blue == true)
 			{
 			  //mySettings.setRightSideRed(false);
-			  mySettings.setBeginningSideRight(Team.BLUE);
-			  mySettings.setBeginningSideLeft(Team.RED);
+			  mySettings.setBeginningSideRight(Team.RED);
+			  mySettings.setBeginningSideLeft(Team.BLUE);
 			}
 		}
 		
