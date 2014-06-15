@@ -102,6 +102,12 @@ public class TossActivity extends Activity implements OnClickListener {
 		
 		RandomNumber();
 		
+		String teamRedButtonText = "Team RED \n " + mySettings.getTeamRedPlayer1() + " \n " + mySettings.getTeamRedPlayer2();
+		String teamBlueButtonText = "Team BLUE \n " + mySettings.getTeamBluePlayer1() + " \n " + mySettings.getTeamBluePlayer2();
+		
+		this.button_TeamRed.setText(teamRedButtonText); 
+		this.button_TeamBlue.setText(teamBlueButtonText);
+		
 		this.button_PlayerRed1.setText(mySettings.getTeamRedPlayer1());
 		this.button_PlayerRed2.setText(mySettings.getTeamRedPlayer2());
 		this.button_PlayerBlue1.setText(mySettings.getTeamBluePlayer1());
