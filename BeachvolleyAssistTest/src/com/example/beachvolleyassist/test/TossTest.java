@@ -470,6 +470,23 @@ public class TossTest extends ActivityInstrumentationTestCase2<TossActivity> {
 		assertTrue(false);
 	}
 
+	public void testTeamRedButton()
+	{	
+		String s = "Team RED \n " + mySettings.getTeamRedPlayer1() + " \n " + mySettings.getTeamRedPlayer2();
+		
+		mySolo.clickOnView(mySolo.getView(R.id.buttonTeamRed));
+		mySolo.getText(s);
+	}
+	
+	public void testTeamBlueButton()
+	{	
+		String s = "Team BLUE \n " + mySettings.getTeamBluePlayer1() + " \n " + mySettings.getTeamBluePlayer2();
+		
+		mySolo.clickOnView(mySolo.getView(R.id.buttonTeamBlue));
+		mySolo.getText(s);
+	}
+	
+	
 	private void waitForRandom()
 	{
 		mySolo.sleep(5000);
@@ -482,4 +499,5 @@ public class TossTest extends ActivityInstrumentationTestCase2<TossActivity> {
 		ColorDrawable colorDrawableBlue = (ColorDrawable) teamBlueButton.getBackground();
 		_teamBlueButtonColorValue = colorDrawableBlue.getColor();
 	}
+	
 }
