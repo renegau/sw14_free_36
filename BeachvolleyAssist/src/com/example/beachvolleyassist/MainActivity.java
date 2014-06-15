@@ -169,6 +169,15 @@ public class MainActivity extends Activity implements OnClickListener
 				ball_red_player1 = false;
 		    }
 		    
+		    if (mySettings.getFirstServicePlayerBlue() == Player.ONE)
+		    {
+		    	ball_blue_player1 = true;
+		    }
+		    else
+		    {
+		    	ball_blue_player1 = false;
+		    }
+		    
 		}
 		else // First service -> Team.BLUE
 		{
@@ -189,6 +198,15 @@ public class MainActivity extends Activity implements OnClickListener
 				imageView_Ball2_Blue.setVisibility(View.VISIBLE);
 				
 				ball_blue_player1 = false;
+		    }
+			
+		    if (mySettings.getFirstServicePlayerRed() == Player.ONE)
+		    {
+		    	ball_red_player1 = true;
+		    }
+		    else
+		    {
+		    	ball_red_player1 = false;
 		    }
 		}	
 	}
@@ -267,7 +285,7 @@ public class MainActivity extends Activity implements OnClickListener
 			    }
 			    else
 			    {
-			      ball_blue_player1 = true;
+			      ball_blue_player1 = false;
 			    }
 			}
 			else if(ball_red_player1 == false)
@@ -346,7 +364,7 @@ public class MainActivity extends Activity implements OnClickListener
 			  }
 			  else
 			  {
-			    ball_red_player1 = false;
+			    ball_red_player1 = true;
 			  }
 			}
 			else if(ball_blue_player1 == false)
@@ -362,7 +380,7 @@ public class MainActivity extends Activity implements OnClickListener
 			  }
 			  else
 			  {
-			    ball_red_player1 = true;
+			    ball_red_player1 = false;
 			  }
 			}
 		}
