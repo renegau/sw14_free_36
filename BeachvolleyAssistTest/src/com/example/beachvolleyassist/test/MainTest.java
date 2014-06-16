@@ -38,15 +38,6 @@ public class MainTest extends ActivityInstrumentationTestCase2<MainActivity> {
 		mySolo.getText("5");
 	}
 	
-	public void testButtonBlueCounter_UNIT()
-	{
-		final Button button_Blue = (Button) getActivity().findViewById(R.id.buttonBlue);
-		
-		button_Blue.performClick();
-		
-		assertEquals("ERROR", button_Blue.getText(), 1);
-	}
-	
 	public void testButtonCancel()
 	{
 		for(int red = 0; red < 3; red++)
@@ -64,15 +55,6 @@ public class MainTest extends ActivityInstrumentationTestCase2<MainActivity> {
 		mySolo.getText("Do you really want to cancel the game?");
 	}
 	
-	public void testButtonCancel_UNIT()
-	{
-		final Button button_Cancel = (Button) getActivity().findViewById(R.id.buttonCancel);
-		
-		button_Cancel.performClick();
-		
-		assertEquals("ERROR", 1 , "Do you really want to cancel the game?");
-	}
-	
 	public void testButtonRedCounter()
 	{
 		mySolo.clickOnView(mySolo.getView(R.id.buttonRed));
@@ -80,15 +62,6 @@ public class MainTest extends ActivityInstrumentationTestCase2<MainActivity> {
 		mySolo.clickOnView(mySolo.getView(R.id.buttonRed));
 
 		mySolo.getText("3");		
-	}
-	
-	public void testButtonRedCounter_UNIT()
-	{
-		final Button button_Red = (Button) getActivity().findViewById(R.id.buttonRed);
-		
-		button_Red.performClick();
-		
-		assertEquals("ERROR", button_Red.getText(), 1);
 	}
 
 	public void testButtonUndo()
@@ -206,17 +179,19 @@ public class MainTest extends ActivityInstrumentationTestCase2<MainActivity> {
 		mySolo.getText("'Team RED' win this set");
 	}
 	
-	public void testTimeoutBlue()
-	{
-		mySolo.clickOnView(mySolo.getView(R.id.buttonTimeoutBlue));
-		mySolo.searchText("Timeout 'Team BLUE'");
-	}
-	
 	
 	public void testTimeoutRed()
 	{
 		mySolo.clickOnView(mySolo.getView(R.id.buttonTimeoutRed));
-		mySolo.searchText("Timeout 'Team RED'");
+		mySolo.sleep(5000);
+		mySolo.getText("THE TIMEOUT IS OVER");
 	}
 	
+	
+	public void testTimeoutBlue()
+	{
+		mySolo.clickOnView(mySolo.getView(R.id.buttonTimeoutBlue));
+		mySolo.sleep(5000);
+		mySolo.getText("THE TIMEOUT IS OVER");
+	}
 }

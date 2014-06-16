@@ -78,7 +78,7 @@ public class MainActivity extends Activity implements OnClickListener
 	private RatingBar rb_blue;
 	private RatingBar rb_red;
 	
-	private long timeout_time = 4000;
+	private long timeout_time = 3000;
 	
 	protected void onCreate(Bundle savedInstanceState) 
 	{
@@ -608,18 +608,25 @@ public class MainActivity extends Activity implements OnClickListener
 		    public void onTick(long milliSeconds) 
 		    {
 		       timeoutDialog.setMessage((milliSeconds/1000) + " seconds left");
-
-		       if(milliSeconds <= 1000)
-		       {
-		    	 timeoutDialog.setMessage("THE TIMEOUT IS OVER");
-			     mp.start();
-		       }
 		    }
 
 		    public void onFinish() 
 		    {
-		    	timeoutDialog.cancel();
-		    	mp.stop();
+			    mp.start();
+			    timeoutDialog.setMessage("THE TIMEOUT IS OVER");
+			    
+		    	new CountDownTimer(5000, 1000)
+				{
+				    public void onTick(long milliSeconds) 
+				    {
+				    }
+
+					public void onFinish() 
+					{
+						mp.stop();
+						timeoutDialog.cancel();
+					}
+				 }.start();
 		    }
 		}.start();
 	}
