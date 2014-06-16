@@ -3,6 +3,7 @@ package com.example.beachvolleyassist;
 import com.example.beachvolleyassist.Settings.Player;
 import com.example.beachvolleyassist.Settings.Team;
 
+import android.media.MediaPlayer;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -76,6 +77,8 @@ public class MainActivity extends Activity implements OnClickListener
 	
 	private RatingBar rb_blue;
 	private RatingBar rb_red;
+	
+	private long timeout_time = 4000;
 	
 	protected void onCreate(Bundle savedInstanceState) 
 	{
@@ -585,7 +588,7 @@ public class MainActivity extends Activity implements OnClickListener
 	{
 		final AlertDialog timeoutDialog = new AlertDialog.Builder(this).create();
 		
-		//final String space = "                 ";
+		final MediaPlayer mp = MediaPlayer.create(getApplicationContext(), R.raw.timeout_finish);
 		
 		if (team == Team.RED)
 		{
@@ -600,16 +603,23 @@ public class MainActivity extends Activity implements OnClickListener
 		timeoutDialog.setCancelable(false);
 		timeoutDialog.show();
 		
-		new CountDownTimer(3000, 1000)
+		new CountDownTimer(timeout_time, 1000)
 		{
 		    public void onTick(long milliSeconds) 
 		    {
 		       timeoutDialog.setMessage((milliSeconds/1000) + " seconds left");
+
+		       if(milliSeconds <= 1000)
+		       {
+		    	 timeoutDialog.setMessage("THE TIMEOUT IS OVER");
+			     mp.start();
+		       }
 		    }
 
 		    public void onFinish() 
 		    {
 		    	timeoutDialog.cancel();
+		    	mp.stop();
 		    }
 		}.start();
 	}

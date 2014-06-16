@@ -48,6 +48,8 @@ public class TossActivity extends Activity implements OnClickListener {
 	boolean winner_blue = false;
 	boolean winner_red = false;
 	
+	boolean change = true;
+	
 	/** Called when the activity is first created. */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -160,29 +162,29 @@ public class TossActivity extends Activity implements OnClickListener {
 
 	private void RandomNumber() 
 	{
-		Random r = new Random();
-		
-		final int r_number = r.nextInt(100) + 1;
-		
+		final int r_number = (int) Math.round(Math.random() + 1);
+
 		new CountDownTimer(5000, 100)
 		{
 		    public void onTick(long milliSeconds) 
-		    {
-		       if(milliSeconds % 2 == 0)
+		    {	
+		       if(change == true)
 		       {
 		    	   button_TeamRed.setBackgroundColor(Color.RED);
 		    	   button_TeamBlue.setBackgroundColor(Color.WHITE);
+		    	   change = false;
 		       }
 		       else
 		       {
 		    	   button_TeamBlue.setBackgroundColor(Color.BLUE);
 		    	   button_TeamRed.setBackgroundColor(Color.WHITE);
+		    	   change = true;
 		       }
 		    }
 
 		    public void onFinish() 
 		    {
-		    	if(r_number %2 == 0)
+		    	if(r_number == 1)
 		    	{
 		    		button_TeamRed.setBackgroundColor(Color.RED);
 			    	button_TeamBlue.setBackgroundColor(Color.WHITE);
@@ -263,6 +265,8 @@ public class TossActivity extends Activity implements OnClickListener {
 		
 		else if (clicked.getId() == this.button_Step2Service.getId()) 
 		{
+			setButtonsEnabled(2);
+			
 			this.button_Step2Return.setEnabled(false);
 			this.button_Step2Rightside.setEnabled(false);
 			this.button_Step2Leftside.setEnabled(false);
@@ -280,11 +284,12 @@ public class TossActivity extends Activity implements OnClickListener {
 			{
 				mySettings.setFirstServiceTeam(Team.BLUE);
 			}
-			setButtonsEnabled(2);
 		}
 		
 		else if (clicked.getId() == this.button_Step2Return.getId()) 
 		{
+			setButtonsEnabled(2);
+			
 			this.button_Step2Service.setEnabled(false);
 			this.button_Step2Rightside.setEnabled(false);
 			this.button_Step2Leftside.setEnabled(false);
@@ -304,11 +309,12 @@ public class TossActivity extends Activity implements OnClickListener {
 			  //mySettings.setReturnRed(false);
 			  mySettings.setFirstServiceTeam(Team.RED);
 			}
-			setButtonsEnabled(2);
 		}
 		
 		else if (clicked.getId() == this.button_Step2Leftside.getId()) 
 		{
+			setButtonsEnabled(2);
+			
 			this.button_Step2Rightside.setEnabled(false);
 			this.button_Step2Service.setEnabled(false);
 			this.button_Step2Return.setEnabled(false);
@@ -330,11 +336,12 @@ public class TossActivity extends Activity implements OnClickListener {
 				mySettings.setBeginningSideLeft(Team.BLUE);
 				mySettings.setBeginningSideRight(Team.RED);
 			}
-			setButtonsEnabled(2);
 		}
 		
 		else if (clicked.getId() == this.button_Step2Rightside.getId()) 
 		{
+			setButtonsEnabled(2);
+			
 			this.button_Step2Leftside.setEnabled(false);
 			this.button_Step2Service.setEnabled(false);
 			this.button_Step2Return.setEnabled(false);
@@ -355,11 +362,12 @@ public class TossActivity extends Activity implements OnClickListener {
 				mySettings.setBeginningSideRight(Team.BLUE);
 				mySettings.setBeginningSideLeft(Team.RED);
 			}
-			setButtonsEnabled(2);
 		}
 		
 		else if (clicked.getId() == this.button_Step3Service.getId()) 
 		{
+			setButtonsEnabled(3);
+			
 			this.button_Step3Return.setEnabled(false);
 			
 			button_Step3Service.setClickable(false);
@@ -374,11 +382,12 @@ public class TossActivity extends Activity implements OnClickListener {
 			  //mySettings.setServiceRed(false);
 				mySettings.setFirstServiceTeam(Team.RED);
 			}
-			setButtonsEnabled(3);
 		}
 		
 		else if (clicked.getId() == this.button_Step3Return.getId()) 
 		{
+			setButtonsEnabled(3);
+			
 			this.button_Step3Service.setEnabled(false);
 			
 			button_Step3Return.setClickable(false);
@@ -393,11 +402,12 @@ public class TossActivity extends Activity implements OnClickListener {
 			  //mySettings.setReturnRed(false);
 				mySettings.setFirstServiceTeam(Team.BLUE);
 			}
-			setButtonsEnabled(3);
 		}
 		
 		else if (clicked.getId() == this.button_Step3Leftside.getId()) 
 		{
+			setButtonsEnabled(3);
+			
 			this.button_Step3Rightside.setEnabled(false);
 			
 			button_Step3Leftside.setClickable(false);
@@ -414,11 +424,12 @@ public class TossActivity extends Activity implements OnClickListener {
 			  mySettings.setBeginningSideLeft(Team.RED);
 		      mySettings.setBeginningSideRight(Team.BLUE);
 			}
-			setButtonsEnabled(3);
 		}
 		
 		else if (clicked.getId() == this.button_Step3Rightside.getId()) 
 		{
+			setButtonsEnabled(3);
+			
 			this.button_Step3Leftside.setEnabled(false);
 			
 			this.button_Step3Rightside.setClickable(false);
@@ -435,7 +446,6 @@ public class TossActivity extends Activity implements OnClickListener {
 			  mySettings.setBeginningSideRight(Team.RED);
 			  mySettings.setBeginningSideLeft(Team.BLUE);
 			}
-			setButtonsEnabled(3);
 		}
 		
 		else if (clicked.getId() == this.button_PlayerRed1.getId()) 
