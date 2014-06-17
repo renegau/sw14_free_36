@@ -11,9 +11,9 @@
     
 <LinearLayout
     android:id="@+id/LayoutRed"
-    android:layout_width="150dp"
-    android:layout_height="400dp"
-    android:layout_marginTop="50dp"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignParentBottom="true"
     android:orientation="vertical" 
     android:background="#66ff0000">
 
@@ -128,11 +128,10 @@
 
 <LinearLayout
     android:id="@+id/LayoutBlue"
-    android:layout_width="150dp"
-    android:layout_height="400dp"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
     android:layout_alignParentBottom="true"
     android:layout_alignParentRight="true"
-    android:layout_weight="10"
     android:background="#8858ACFA"
     android:orientation="vertical" >
 
