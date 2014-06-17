@@ -285,15 +285,21 @@ public class MainActivity extends Activity implements OnClickListener
 			    imageView_Ball2_Red.setVisibility(View.INVISIBLE);
 			    imageView_Ball1_Blue.setVisibility(View.INVISIBLE);
 			    imageView_Ball2_Blue.setVisibility(View.INVISIBLE);
-			  
-			    if(ball_blue_player1 == true)
-				{
-					ball_blue_player1 = false;
-				}
-			    else if(ball_blue_player1 == false)
+
+			    if(first_service_blue == false)
 			    {
+			      if(ball_blue_player1 == true)
+				  {
+					ball_blue_player1 = false;
+				  }
+			      else if(ball_blue_player1 == false)
+			      {
 			    	ball_blue_player1 = true;
+			      }
 			    }
+				  
+			    first_service_red = false;
+			    
 			}
 			else if(ball_red_player1 == false)
 			{
@@ -302,14 +308,18 @@ public class MainActivity extends Activity implements OnClickListener
 			    imageView_Ball1_Blue.setVisibility(View.INVISIBLE);
 			    imageView_Ball2_Blue.setVisibility(View.INVISIBLE);
 
-			    if(ball_blue_player1 == true)
-				{
-					ball_blue_player1 = false;
-				}
-			    else if(ball_blue_player1 == false)
+			    if(first_service_blue == false)
 			    {
+			      if(ball_blue_player1 == true)
+				  {
+					ball_blue_player1 = false;
+				  }
+			      else if(ball_blue_player1 == false)
+			      {
 			    	ball_blue_player1 = true;
+			      }
 			    }
+			    first_service_red = false;
 			}
 		} 
 		else if (clicked.getId() == this.button_Blue.getId())
@@ -365,14 +375,18 @@ public class MainActivity extends Activity implements OnClickListener
 			  imageView_Ball2_Red.setVisibility(View.INVISIBLE);
 			  imageView_Ball2_Blue.setVisibility(View.INVISIBLE);
 			  
-			  if(ball_red_player1 == true)
+			  if(first_service_red == false)
 			  {
-				  ball_red_player1 = false;
+			     if(ball_red_player1 == true)
+				 {
+			    	  ball_red_player1 = false;
+				 }
+			     else if(ball_red_player1 == false)
+			     {
+			    	  ball_red_player1 = true;
+			     }
 			  }
-			  else if(ball_red_player1 == false)
-			  {
-				  ball_red_player1 = true;
-			  }
+			  first_service_blue = false;
 			}
 			else if(ball_blue_player1 == false)
 			{
@@ -381,14 +395,18 @@ public class MainActivity extends Activity implements OnClickListener
 			  imageView_Ball2_Red.setVisibility(View.INVISIBLE);
 			  imageView_Ball1_Blue.setVisibility(View.INVISIBLE);
 			  
-			  if(ball_red_player1 == true)
+			  if(first_service_red == false)
 			  {
-				  ball_red_player1 = false;
+			      if(ball_red_player1 == true)
+				  {
+			    	  ball_red_player1 = false;
+				  }
+			      else if(ball_red_player1 == false)
+			      {
+			    	  ball_red_player1 = true;
+			      }
 			  }
-			  else if(ball_red_player1 == false)
-			  {
-				  ball_red_player1 = true;
-			  }
+			  first_service_blue = false;
 			}
 		}
 		else if(clicked.getId() == this.button_Cancel.getId())
@@ -475,6 +493,8 @@ public class MainActivity extends Activity implements OnClickListener
 			{
 				button_TimeoutRed.setEnabled(false);
 			}
+			
+			this.button_Undo.setEnabled(false);
 		}
 		else if(clicked.getId() == this.button_TimeoutBlue.getId())
 		{
@@ -496,6 +516,7 @@ public class MainActivity extends Activity implements OnClickListener
 			{
 		      button_TimeoutBlue.setEnabled(false);
 			}
+			this.button_Undo.setEnabled(false);
 		}	
 	}
 	

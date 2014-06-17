@@ -463,11 +463,14 @@ public class TossTest extends ActivityInstrumentationTestCase2<TossActivity> {
 
 	public void testButtonUndo()
 	{	
+		waitForRandom();
+		mySolo.clickOnView(mySolo.getView(R.id.buttonStep2Service));
 		mySolo.clickOnView(mySolo.getView(R.id.buttonUndo));
-		mySolo.getText("Undo");
 		
-		// TODO
-		assertTrue(false);
+		assertTrue(mySolo.getView(R.id.buttonStep2Leftside).isEnabled());
+		assertTrue(mySolo.getView(R.id.buttonStep2Rightside).isEnabled());
+		assertTrue(mySolo.getView(R.id.buttonStep2Service).isEnabled());
+		assertTrue(mySolo.getView(R.id.buttonStep2Return).isEnabled());
 	}
 
 	public void testTeamRedButton()

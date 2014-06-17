@@ -2,6 +2,7 @@ package com.example.beachvolleyassist.test;
 
 import com.example.beachvolleyassist.MainActivity;
 import com.example.beachvolleyassist.R;
+import com.example.beachvolleyassist.Settings;
 import com.robotium.solo.Solo;
 
 import android.annotation.TargetApi;
