@@ -141,6 +141,8 @@ public class MainActivity extends Activity implements OnClickListener
 		
 		rb_red  = (RatingBar) findViewById(R.id.ratingBarRed);
 		rb_blue = (RatingBar) findViewById(R.id.ratingBarBlue);	
+		
+		this.button_Undo.setEnabled(false);
 	      
 		if (mySettings.getBeginningSideLeft() == Team.BLUE)
 		{	
@@ -228,6 +230,8 @@ public class MainActivity extends Activity implements OnClickListener
 	{
 		Button clicked = (Button) view;
 		AlertDialog.Builder dlgAlert  = new AlertDialog.Builder(this);
+		
+		this.button_Undo.setEnabled(true);
 
 		if (clicked.getId() == this.button_Red.getId()) 
 		{
@@ -518,6 +522,8 @@ public class MainActivity extends Activity implements OnClickListener
 		
 		finish_red = false;
 		finish_blue = false;
+		
+		this.button_Undo.setEnabled(false);
 	}
 	
 	private void setAllNull() 

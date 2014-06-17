@@ -45,10 +45,12 @@ public class TossActivity extends Activity implements OnClickListener {
 	private Button button_Step3Leftside;
 	private Button button_Step3Rightside;
 	
-	boolean winner_blue = false;
-	boolean winner_red = false;
+	private boolean winner_blue = false;
+	private boolean winner_red = false;
 	
-	boolean change = true;
+	private boolean next_enabled = false;
+	
+	private boolean change = true;
 	
 	/** Called when the activity is first created. */
 	@Override
@@ -136,6 +138,8 @@ public class TossActivity extends Activity implements OnClickListener {
 			this.button_Step3Return.setEnabled(false);
 			this.button_Step3Leftside.setEnabled(false);
 			this.button_Step3Rightside.setEnabled(false);
+			
+			this.button_Next.setEnabled(false);
 		}
 		else if(step == 1)
 		{
@@ -454,6 +458,15 @@ public class TossActivity extends Activity implements OnClickListener {
 			//mySettings.setServicePlayer1_red(true);
 			mySettings.setFirstServicePlayerRed(Player.ONE);
 			this.button_PlayerRed2.setClickable(false);
+			
+			if(next_enabled == true)
+			{
+			  this.button_Next.setEnabled(true);
+			}
+			else
+			{
+				next_enabled = true;
+			}
 		}
 		
 		else if (clicked.getId() == this.button_PlayerRed2.getId()) 
@@ -461,7 +474,16 @@ public class TossActivity extends Activity implements OnClickListener {
 			this.button_PlayerRed1.setEnabled(false);
 			//mySettings.setServicePlayer2_red(true);
 			mySettings.setFirstServicePlayerRed(Player.TWO);
-			this.button_PlayerRed2.setClickable(false);
+			this.button_PlayerRed2.setClickable(false);		
+			
+			if(next_enabled == true)
+			{
+			  this.button_Next.setEnabled(true);
+			}
+			else
+			{
+				next_enabled = true;
+			}
 		}
 		
 		else if (clicked.getId() == this.button_PlayerBlue1.getId()) 
@@ -470,6 +492,15 @@ public class TossActivity extends Activity implements OnClickListener {
 			//mySettings.setServicePlayer1_red(false);
 			mySettings.setFirstServicePlayerBlue(Player.ONE);
 			this.button_PlayerBlue1.setClickable(false);
+			
+			if(next_enabled == true)
+			{
+			  this.button_Next.setEnabled(true);
+			}
+			else
+			{
+				next_enabled = true;
+			}
 		}
 		
 		else if (clicked.getId() == this.button_PlayerBlue2.getId()) 
@@ -477,7 +508,16 @@ public class TossActivity extends Activity implements OnClickListener {
 			this.button_PlayerBlue1.setEnabled(false);
 			//mySettings.setServicePlayer2_red(false);
 			mySettings.setFirstServicePlayerBlue(Player.TWO);
-			this.button_PlayerBlue2.setClickable(false);
+			this.button_PlayerBlue2.setClickable(false);		
+			
+			if(next_enabled == true)
+			{
+			  this.button_Next.setEnabled(true);
+			}
+			else
+			{
+				next_enabled = true;
+			}
 		}
 	}
 
