@@ -17,6 +17,7 @@
     
         <activity
             android:name="com.example.beachvolleyassist.MainActivity"
+            android:screenOrientation="nosensor"
             android:label="@string/app_name" >
            
         </activity>
@@ -32,10 +33,7 @@
                     <category android:name="android.intent.category.LAUNCHER" />
                 </intent-filter>
         </activity>
-               <activity android:name="com.example.beachvolleyassist.TossActivity"> </activity>
-      
-        <activitiy android:screenOrientation="nosensor"> </activitiy>
-               
+               <activity android:name="com.example.beachvolleyassist.TossActivity"> </activity>            
     </application>
 
 </manifest>

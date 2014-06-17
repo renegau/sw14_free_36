@@ -21,11 +21,10 @@ import android.widget.TextView;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.pm.ActivityInfo;
-import android.content.res.Configuration;
 
 public class MainActivity extends Activity implements OnClickListener 
 {
+	// Button
 	private Button button_Red;
 	private Button button_Blue;
 	private Button button_Cancel;
@@ -33,33 +32,46 @@ public class MainActivity extends Activity implements OnClickListener
 	private Button button_TimeoutRed;
 	private Button button_TimeoutBlue;
 	
+	// Layout
 	private LinearLayout layout_red;
 	private LinearLayout layout_blue;
 	
-	int counterRed = 0;
-	int counterBlue = 0;
-	boolean red = false;
-	boolean blue = false;
+	// counter for the points
+	private int counterRed = 0;
+	private int counterBlue = 0;
 	
-	int timeoutleft_red = 2;
-	int timeoutleft_blue = 2;
+	// to check who is on series
+	private boolean red = false;
+	private boolean blue = false;
 	
-	boolean ball_red_player1 = true;
-	boolean ball_blue_player1 = true;
+	// timeoutleft
+	private int timeoutleft_red = 2;
+	private int timeoutleft_blue = 2;
 	
-	int redSet = 0;
-	int blueSet = 0;
+	// to check who has service
+	private boolean ball_red_player1 = true;
+	private boolean ball_blue_player1 = true;
 	
-	boolean finish_red = false;
-	boolean finish_blue = false;
+	// counter for the sets
+	private int redSet = 0;
+	private int blueSet = 0;
 	
-	boolean first_service_red = true;
-	boolean first_service_blue = true;
+	// for the undo button, to check if someone 
+	// finish the set or the game
+	private boolean finish_red = false;
+	private boolean finish_blue = false;
 	
-	boolean switched = false;
+	// to check which one have the first service
+	private boolean first_service_red = true;
+	private boolean first_service_blue = true;
 	
+	// for the undo button to check if the teams switched or not
+	private boolean switched = false;
+	
+	// Object from Settings
 	Settings mySettings;
 	
+	// TextView
 	private TextView textView_TeamBlueName;
 	private TextView textView_TeamRedName;
 	private TextView textView_TeamBluePlayer1;
@@ -67,20 +79,22 @@ public class MainActivity extends Activity implements OnClickListener
 	private TextView textView_TeamRedPlayer1;
 	private TextView textView_TeamRedPlayer2;
 	
+	//ImageView
 	private ImageView imageView_Timeout1_Red;
 	private ImageView imageView_Timeout2_Red;
 	private ImageView imageView_Timeout1_Blue;
 	private ImageView imageView_Timeout2_Blue;
-	
 	private ImageView imageView_Ball1_Red;
 	private ImageView imageView_Ball2_Red;
 	private ImageView imageView_Ball1_Blue;
 	private ImageView imageView_Ball2_Blue;
 	
+	// RatingBar
 	private RatingBar rb_blue;
 	private RatingBar rb_red;
 	
-	private long timeout_time = 3000;
+	// Timeout_time
+	private long timeout_time = 30000;
 	
 	protected void onCreate(Bundle savedInstanceState) 
 	{
@@ -91,6 +105,7 @@ public class MainActivity extends Activity implements OnClickListener
 		
 		mySettings = (Settings) getApplication();
 		
+		// Find the buttons, layouts, imageviews and ratingbar
 		this.button_Red = (Button) this.findViewById(R.id.buttonRed);
 		this.button_Blue = (Button) this.findViewById(R.id.buttonBlue);
 		this.button_Cancel = (Button) this.findViewById(R.id.buttonCancel);
@@ -144,8 +159,10 @@ public class MainActivity extends Activity implements OnClickListener
 		rb_red  = (RatingBar) findViewById(R.id.ratingBarRed);
 		rb_blue = (RatingBar) findViewById(R.id.ratingBarBlue);	
 		
+		// set button undo disabled
 		this.button_Undo.setEnabled(false);
-	      
+		
+	    // to check if the teams have to switch the sides  
 		if (mySettings.getBeginningSideLeft() == Team.BLUE)
 		{	
 			changeLayoutStart();
@@ -155,6 +172,7 @@ public class MainActivity extends Activity implements OnClickListener
 			changeLayoutStart();
 		}
 		
+		// check who have the first service from his team
 		if (mySettings.getFirstServiceTeam() == Team.RED)
 		{
 		    if (mySettings.getFirstServicePlayerRed() == Player.ONE)
@@ -234,15 +252,18 @@ public class MainActivity extends Activity implements OnClickListener
 		AlertDialog.Builder dlgAlert  = new AlertDialog.Builder(this);
 		
 		this.button_Undo.setEnabled(true);
-
+		
+		// BUTTON_RED
 		if (clicked.getId() == this.button_Red.getId()) 
 		{
+			// add the counter for the points
 			this.counterRed += 1;
 			this.button_Red.setText(Integer.toString(counterRed));
 			switched = false;
 			
 			this.red = true;
 			
+			// check if team red win the set or the game
 			if(counterRed >= 21 && counterBlue < (counterRed - 1))
 			{
 				redSet++;
@@ -275,12 +296,14 @@ public class MainActivity extends Activity implements OnClickListener
 				first_service_blue = true;
 				finish_red = true;
 			}
+			// after every 7 points the team have to change their sides
 			else if(((counterRed + counterBlue) % 7) == 0)
 			{
 				changeLayoutDialoge();
 				changeLayout();
 			}
 			
+			// to switch the service between the players
 			if(ball_red_player1 == true)
 			{
 		        imageView_Ball1_Red.setVisibility(View.VISIBLE);
@@ -324,6 +347,8 @@ public class MainActivity extends Activity implements OnClickListener
 			    first_service_red = false;
 			}
 		} 
+		
+		// BUTTON_BLUE (the same as BUTTON_RED)
 		else if (clicked.getId() == this.button_Blue.getId())
 		{
 			this.counterBlue += 1;
@@ -411,6 +436,8 @@ public class MainActivity extends Activity implements OnClickListener
 			  first_service_blue = false;
 			}
 		}
+		
+		// BUTTON_CANCEL
 		else if(clicked.getId() == this.button_Cancel.getId())
 		{	
 			dlgAlert.setMessage("Do you really want to cancel the game?");
@@ -442,8 +469,12 @@ public class MainActivity extends Activity implements OnClickListener
 				
 			dlgAlert.create().show();			
 		}
+		
+		// BUTTON_UNDO
 		else if(clicked.getId() == this.button_Undo.getId())
 		{
+			// If the game is over and the button undo was clicked, all button have 
+			// to enabled
 			if(finish_red == true || finish_blue == true)
 			{
 				makeUndo();
@@ -475,11 +506,15 @@ public class MainActivity extends Activity implements OnClickListener
 				makeUndo();	
 			}
 		}
+		
+		// BUTTON_TIMEOUT_RED
 		else if(clicked.getId() == this.button_TimeoutRed.getId())
 		{
+			// ENUM TEAM
 			Team team = Team.RED;
 			timeoutDialog(team);
 			
+			// Check if timeouts are left and set the image
 			if(timeoutleft_red == 2)
 			{
 		      imageView_Timeout1_Red.setImageResource(R.drawable.ic_delete);
@@ -490,7 +525,6 @@ public class MainActivity extends Activity implements OnClickListener
 		      imageView_Timeout2_Red.setImageResource(R.drawable.ic_delete);
 		      timeoutleft_red--;
 			}
-			
 			if(timeoutleft_red == 0)
 			{
 				button_TimeoutRed.setEnabled(false);
@@ -498,6 +532,8 @@ public class MainActivity extends Activity implements OnClickListener
 			
 			this.button_Undo.setEnabled(false);
 		}
+		
+		// BUTTON_TIMEOUT_BLUE (the same as BUTTON_TIMEOUT_RED)
 		else if(clicked.getId() == this.button_TimeoutBlue.getId())
 		{
 			Team team = Team.BLUE;
@@ -522,6 +558,7 @@ public class MainActivity extends Activity implements OnClickListener
 		}	
 	}
 	
+	// Methode that decrement the points
 	private void makeUndo()
 	{
 		if(red == true)
@@ -537,6 +574,7 @@ public class MainActivity extends Activity implements OnClickListener
 			blue = false;
 		}
 		
+		// if it was switched before, switched it again
 		if(switched == true)
 		{
 		    changeLayout();
@@ -548,6 +586,7 @@ public class MainActivity extends Activity implements OnClickListener
 		this.button_Undo.setEnabled(false);
 	}
 	
+	// Methode that set all stats to 0
 	private void setAllNull() 
 	{
 	  counterRed = 0;
@@ -574,6 +613,7 @@ public class MainActivity extends Activity implements OnClickListener
 	  imageView_Timeout2_Blue.setImageResource(R.drawable.ic_media_pause);
 	}
 
+	// Change the layout at the start
 	@SuppressLint("NewApi")
 	private void changeLayoutStart() 
 	{
@@ -584,6 +624,7 @@ public class MainActivity extends Activity implements OnClickListener
 	  layout_blue.setY(0);
 	}
 	
+	// Dialog with a message
 	private void changeLayoutDialoge()
 	{
 	  AlertDialog.Builder dlgAlert  = new AlertDialog.Builder(this);
@@ -595,6 +636,7 @@ public class MainActivity extends Activity implements OnClickListener
 	  dlgAlert.create().show();
 	}
 	
+	// change the Layouts
 	@SuppressLint("NewApi")
 	private void changeLayout()
 	{ 
@@ -611,6 +653,7 @@ public class MainActivity extends Activity implements OnClickListener
       switched = true;
 	}
 	
+	// Count the timeout from 30 to 0 and play a sound after the timout is over
 	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
 	private void timeoutDialog(Team team)
 	{

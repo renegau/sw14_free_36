@@ -2,13 +2,10 @@ package com.example.beachvolleyassist.test;
 
 import com.example.beachvolleyassist.MainActivity;
 import com.example.beachvolleyassist.R;
-import com.example.beachvolleyassist.Settings;
 import com.robotium.solo.Solo;
-
 import android.annotation.TargetApi;
 import android.os.Build;
 import android.test.ActivityInstrumentationTestCase2;
-import android.widget.Button;
 import android.widget.LinearLayout;
 
 public class MainTest extends ActivityInstrumentationTestCase2<MainActivity> {
