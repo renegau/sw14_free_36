@@ -174,13 +174,13 @@ public class TossActivity extends Activity implements OnClickListener {
 		    {	
 		       if(change == true)
 		       {
-		    	   button_TeamRed.setBackgroundColor(Color.RED);
+		    	   button_TeamRed.setBackgroundColor(0x66ff0000);
 		    	   button_TeamBlue.setBackgroundColor(Color.WHITE);
 		    	   change = false;
 		       }
 		       else
 		       {
-		    	   button_TeamBlue.setBackgroundColor(Color.BLUE);
+		    	   button_TeamBlue.setBackgroundColor(0x8858ACFA);
 		    	   button_TeamRed.setBackgroundColor(Color.WHITE);
 		    	   change = true;
 		       }
@@ -190,7 +190,7 @@ public class TossActivity extends Activity implements OnClickListener {
 		    {
 		    	if(r_number == 1)
 		    	{
-		    		button_TeamRed.setBackgroundColor(Color.RED);
+		    		button_TeamRed.setBackgroundColor(0x66ff0000);
 			    	button_TeamBlue.setBackgroundColor(Color.WHITE);
 			    	
 			    	winner_red = true;
@@ -198,7 +198,7 @@ public class TossActivity extends Activity implements OnClickListener {
 		    	}
 			    else
 			    {
-			    	button_TeamBlue.setBackgroundColor(Color.BLUE);
+			    	button_TeamBlue.setBackgroundColor(0x8858ACFA);
 			    	button_TeamRed.setBackgroundColor(Color.WHITE);
 
 			    	winner_blue = true;
