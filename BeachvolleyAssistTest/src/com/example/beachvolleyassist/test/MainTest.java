@@ -181,7 +181,7 @@ public class MainTest extends ActivityInstrumentationTestCase2<MainActivity> {
 	public void testTimeoutRed()
 	{
 		mySolo.clickOnView(mySolo.getView(R.id.buttonTimeoutRed));
-		mySolo.sleep(5000);
+		mySolo.sleep(33000);
 		mySolo.getText("THE TIMEOUT IS OVER");
 	}
 	
@@ -189,7 +189,7 @@ public class MainTest extends ActivityInstrumentationTestCase2<MainActivity> {
 	public void testTimeoutBlue()
 	{
 		mySolo.clickOnView(mySolo.getView(R.id.buttonTimeoutBlue));
-		mySolo.sleep(5000);
+		mySolo.sleep(33000);
 		mySolo.getText("THE TIMEOUT IS OVER");
 	}
 }

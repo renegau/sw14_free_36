@@ -601,16 +601,18 @@ public class MainActivity extends Activity implements OnClickListener
 	  ball_red_player1 = true;
       ball_blue_player1 = true;
 	  
-	  button_Blue.setText(Integer.toString(counterBlue));
-	  button_Red.setText(Integer.toString(counterRed));
+      this.button_Blue.setText(Integer.toString(counterBlue));
+      this.button_Red.setText(Integer.toString(counterRed));
 	  
-      button_TimeoutRed.setEnabled(true);
-	  button_TimeoutBlue.setEnabled(true);
+	  this.button_TimeoutRed.setEnabled(true);
+      this.button_TimeoutBlue.setEnabled(true);
 	  
-	  imageView_Timeout1_Red.setImageResource(R.drawable.ic_media_pause);
-	  imageView_Timeout2_Red.setImageResource(R.drawable.ic_media_pause);
-	  imageView_Timeout1_Blue.setImageResource(R.drawable.ic_media_pause);
-	  imageView_Timeout2_Blue.setImageResource(R.drawable.ic_media_pause);
+	  this.button_Undo.setEnabled(false);
+	  
+	  this.imageView_Timeout1_Red.setImageResource(R.drawable.ic_media_pause);
+	  this.imageView_Timeout2_Red.setImageResource(R.drawable.ic_media_pause);
+	  this.imageView_Timeout1_Blue.setImageResource(R.drawable.ic_media_pause);
+	  this.imageView_Timeout2_Blue.setImageResource(R.drawable.ic_media_pause);
 	}
 
 	// Change the layout at the start

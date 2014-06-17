@@ -45,18 +45,9 @@ public class TossTest extends ActivityInstrumentationTestCase2<TossActivity> {
 	{	
 		waitForRandom();
 		
-		// public static final int BLUE
-        // Constant Value: -16776961 (0xff0000ff)
-        //
-        // public static final int RED
-        // Constant Value: -65536 (0xffff0000)
-        // 
-        // public static final int WHITE
-        // Constant Value: -1 (0xffffffff)
-
         assertTrue(
-        		( _teamRedButtonColorValue == Color.RED && _teamBlueButtonColorValue == Color.WHITE ) ||
-        		( _teamRedButtonColorValue == Color.WHITE && _teamBlueButtonColorValue == Color.BLUE) );
+        		( _teamRedButtonColorValue == 0x66ff0000 && _teamBlueButtonColorValue == Color.WHITE ) ||
+        		( _teamRedButtonColorValue == Color.WHITE && _teamBlueButtonColorValue == 0x8858ACFA) );
 	}
 	
 	public void testTextStep2AndStep3()
@@ -64,7 +55,7 @@ public class TossTest extends ActivityInstrumentationTestCase2<TossActivity> {
 		waitForRandom();
 		
 		// Team RED wins the toss
-        if (_teamRedButtonColorValue == Color.RED && _teamBlueButtonColorValue == Color.WHITE)
+        if (_teamRedButtonColorValue == 0x66ff0000 && _teamBlueButtonColorValue == Color.WHITE)
         {
         	mySolo.getView(R.id.textViewStep2);
     		mySolo.getText("Step 2/4: Winner of the toss TEAM RED is choosing?");
@@ -73,7 +64,7 @@ public class TossTest extends ActivityInstrumentationTestCase2<TossActivity> {
     		mySolo.getText("Step 3/4: Looser of the toss TEAM BLUE is choosing?");
         }
         // Team BLUE wins the toss
-        else if (_teamRedButtonColorValue == Color.WHITE && _teamBlueButtonColorValue == Color.BLUE)
+        else if (_teamRedButtonColorValue == Color.WHITE && _teamBlueButtonColorValue == 0x8858ACFA)
         {
         	mySolo.getView(R.id.textViewStep2);
     		mySolo.getText("Step 2/4: Winner of the toss TEAM BLUE is choosing?");
@@ -105,12 +96,12 @@ public class TossTest extends ActivityInstrumentationTestCase2<TossActivity> {
 		assertTrue(mySolo.getView(R.id.buttonStep3Rightside).isEnabled());
 		
 		// Team RED wins the toss
-        if (_teamRedButtonColorValue == Color.RED && _teamBlueButtonColorValue == Color.WHITE)
+        if (_teamRedButtonColorValue == 0x66ff0000 && _teamBlueButtonColorValue == Color.WHITE)
         {
 		    assertTrue(mySettings.getFirstServiceTeam().equals(Team.RED));
         }
         // Team BLUE wins the toss
-        else if (_teamRedButtonColorValue == Color.WHITE && _teamBlueButtonColorValue == Color.BLUE)
+        else if (_teamRedButtonColorValue == Color.WHITE && _teamBlueButtonColorValue == 0x8858ACFA)
         {
         	assertTrue(mySettings.getFirstServiceTeam().equals(Team.BLUE));
         }     
@@ -138,12 +129,12 @@ public class TossTest extends ActivityInstrumentationTestCase2<TossActivity> {
 		assertTrue(mySolo.getView(R.id.buttonStep3Rightside).isEnabled());
 		
 		// Team RED wins the toss
-        if (_teamRedButtonColorValue == Color.RED && _teamBlueButtonColorValue == Color.WHITE)
+        if (_teamRedButtonColorValue == 0x66ff0000 && _teamBlueButtonColorValue == Color.WHITE)
         {
 		    assertTrue(mySettings.getFirstServiceTeam().equals(Team.BLUE));
         }
         // Team BLUE wins the toss
-        else if (_teamRedButtonColorValue == Color.WHITE && _teamBlueButtonColorValue == Color.BLUE)
+        else if (_teamRedButtonColorValue == Color.WHITE && _teamBlueButtonColorValue == 0x8858ACFA)
         {
         	assertTrue(mySettings.getFirstServiceTeam().equals(Team.RED));
         }     
@@ -170,13 +161,13 @@ public class TossTest extends ActivityInstrumentationTestCase2<TossActivity> {
 		assertFalse(mySolo.getView(R.id.buttonStep3Rightside).isEnabled());
 		
 		// Team RED wins the toss
-        if (_teamRedButtonColorValue == Color.RED && _teamBlueButtonColorValue == Color.WHITE)
+        if (_teamRedButtonColorValue == 0x66ff0000 && _teamBlueButtonColorValue == Color.WHITE)
         {
 		    assertTrue(mySettings.getBeginningSideLeft().equals(Team.RED));
 		    assertTrue(mySettings.getBeginningSideRight().equals(Team.BLUE));
         }
         // Team BLUE wins the toss
-        else if (_teamRedButtonColorValue == Color.WHITE && _teamBlueButtonColorValue == Color.BLUE)
+        else if (_teamRedButtonColorValue == Color.WHITE && _teamBlueButtonColorValue == 0x8858ACFA)
         {
         	assertTrue(mySettings.getBeginningSideLeft().equals(Team.BLUE));
         	assertTrue(mySettings.getBeginningSideRight().equals(Team.RED));
@@ -204,13 +195,13 @@ public class TossTest extends ActivityInstrumentationTestCase2<TossActivity> {
 		assertFalse(mySolo.getView(R.id.buttonStep3Rightside).isEnabled());
 		
 		// Team RED wins the toss
-        if (_teamRedButtonColorValue == Color.RED && _teamBlueButtonColorValue == Color.WHITE)
+        if (_teamRedButtonColorValue == 0x66ff0000 && _teamBlueButtonColorValue == Color.WHITE)
         {
 		    assertTrue(mySettings.getBeginningSideRight().equals(Team.RED));
 		    assertTrue(mySettings.getBeginningSideLeft().equals(Team.BLUE));
         }
         // Team BLUE wins the toss
-        else if (_teamRedButtonColorValue == Color.WHITE && _teamBlueButtonColorValue == Color.BLUE)
+        else if (_teamRedButtonColorValue == Color.WHITE && _teamBlueButtonColorValue == 0x8858ACFA)
         {
         	assertTrue(mySettings.getBeginningSideRight().equals(Team.BLUE));
         	assertTrue(mySettings.getBeginningSideLeft().equals(Team.RED));
@@ -240,7 +231,7 @@ public class TossTest extends ActivityInstrumentationTestCase2<TossActivity> {
 		assertFalse(mySolo.getView(R.id.buttonStep3Rightside).isEnabled());
 		
 		// Team RED wins the toss
-        if (_teamRedButtonColorValue == Color.RED && _teamBlueButtonColorValue == Color.WHITE)
+        if (_teamRedButtonColorValue == 0x66ff0000 && _teamBlueButtonColorValue == Color.WHITE)
         {
 		    assertTrue(mySettings.getBeginningSideRight().equals(Team.RED));
 		    assertTrue(mySettings.getBeginningSideLeft().equals(Team.BLUE));
@@ -248,7 +239,7 @@ public class TossTest extends ActivityInstrumentationTestCase2<TossActivity> {
 		    assertTrue(mySettings.getFirstServiceTeam().equals(Team.BLUE));
         }
         // Team BLUE wins the toss
-        else if (_teamRedButtonColorValue == Color.WHITE && _teamBlueButtonColorValue == Color.BLUE)
+        else if (_teamRedButtonColorValue == Color.WHITE && _teamBlueButtonColorValue == 0x8858ACFA)
         {
         	assertTrue(mySettings.getBeginningSideRight().equals(Team.BLUE));
         	assertTrue(mySettings.getBeginningSideLeft().equals(Team.RED));
@@ -280,7 +271,7 @@ public class TossTest extends ActivityInstrumentationTestCase2<TossActivity> {
 		assertFalse(mySolo.getView(R.id.buttonStep3Rightside).isEnabled());
 		
 		// Team RED wins the toss
-        if (_teamRedButtonColorValue == Color.RED && _teamBlueButtonColorValue == Color.WHITE)
+        if (_teamRedButtonColorValue == 0x66ff0000 && _teamBlueButtonColorValue == Color.WHITE)
         {
 		    assertTrue(mySettings.getBeginningSideRight().equals(Team.RED));
 		    assertTrue(mySettings.getBeginningSideLeft().equals(Team.BLUE));
@@ -288,7 +279,7 @@ public class TossTest extends ActivityInstrumentationTestCase2<TossActivity> {
 		    assertTrue(mySettings.getFirstServiceTeam().equals(Team.RED));
         }
         // Team BLUE wins the toss
-        else if (_teamRedButtonColorValue == Color.WHITE && _teamBlueButtonColorValue == Color.BLUE)
+        else if (_teamRedButtonColorValue == Color.WHITE && _teamBlueButtonColorValue == 0x8858ACFA)
         {
         	assertTrue(mySettings.getBeginningSideRight().equals(Team.BLUE));
         	assertTrue(mySettings.getBeginningSideLeft().equals(Team.RED));
@@ -320,7 +311,7 @@ public class TossTest extends ActivityInstrumentationTestCase2<TossActivity> {
 		assertFalse(mySolo.getView(R.id.buttonStep3Rightside).isEnabled());
 		
 		// Team RED wins the toss
-        if (_teamRedButtonColorValue == Color.RED && _teamBlueButtonColorValue == Color.WHITE)
+        if (_teamRedButtonColorValue == 0x66ff0000 && _teamBlueButtonColorValue == Color.WHITE)
         {
 		    assertTrue(mySettings.getFirstServiceTeam().equals(Team.RED));
 		    
@@ -328,7 +319,7 @@ public class TossTest extends ActivityInstrumentationTestCase2<TossActivity> {
 		    assertTrue(mySettings.getBeginningSideRight().equals(Team.RED));
         }
         // Team BLUE wins the toss
-        else if (_teamRedButtonColorValue == Color.WHITE && _teamBlueButtonColorValue == Color.BLUE)
+        else if (_teamRedButtonColorValue == Color.WHITE && _teamBlueButtonColorValue == 0x8858ACFA)
         {
         	assertTrue(mySettings.getFirstServiceTeam().equals(Team.BLUE));
         	
@@ -360,7 +351,7 @@ public class TossTest extends ActivityInstrumentationTestCase2<TossActivity> {
 		assertTrue(mySolo.getView(R.id.buttonStep3Rightside).isEnabled());
 		
 		// Team RED wins the toss
-        if (_teamRedButtonColorValue == Color.RED && _teamBlueButtonColorValue == Color.WHITE)
+        if (_teamRedButtonColorValue == 0x66ff0000 && _teamBlueButtonColorValue == Color.WHITE)
         {
 		    assertTrue(mySettings.getFirstServiceTeam().equals(Team.RED));
 		    
@@ -368,7 +359,7 @@ public class TossTest extends ActivityInstrumentationTestCase2<TossActivity> {
 		    assertTrue(mySettings.getBeginningSideLeft().equals(Team.RED));
         }
         // Team BLUE wins the toss
-        else if (_teamRedButtonColorValue == Color.WHITE && _teamBlueButtonColorValue == Color.BLUE)
+        else if (_teamRedButtonColorValue == Color.WHITE && _teamBlueButtonColorValue == 0x8858ACFA)
         {
         	assertTrue(mySettings.getFirstServiceTeam().equals(Team.BLUE));
         	
@@ -475,7 +466,7 @@ public class TossTest extends ActivityInstrumentationTestCase2<TossActivity> {
 
 	public void testTeamRedButton()
 	{	
-		String s = "Team RED \n " + mySettings.getTeamRedPlayer1() + " \n " + mySettings.getTeamRedPlayer2();
+		String s = "Team RED \n " + mySettings.getTeamRedPlayer1() + " \n" + mySettings.getTeamRedPlayer2();
 		
 		mySolo.clickOnView(mySolo.getView(R.id.buttonTeamRed));
 		mySolo.getText(s);
@@ -483,7 +474,7 @@ public class TossTest extends ActivityInstrumentationTestCase2<TossActivity> {
 	
 	public void testTeamBlueButton()
 	{	
-		String s = "Team BLUE \n " + mySettings.getTeamBluePlayer1() + " \n " + mySettings.getTeamBluePlayer2();
+		String s = "Team BLUE \n " + mySettings.getTeamBluePlayer1() + " \n" + mySettings.getTeamBluePlayer2();
 		
 		mySolo.clickOnView(mySolo.getView(R.id.buttonTeamBlue));
 		mySolo.getText(s);
