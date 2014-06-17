@@ -575,11 +575,11 @@ public class MainActivity extends Activity implements OnClickListener
 	@SuppressLint("NewApi")
 	private void changeLayoutStart() 
 	{
-	  layout_red.setX(240);
+	  /*layout_red.setX(240);
 	  layout_red.setY(0);
 		
 	  layout_blue.setX(-240);
-	  layout_blue.setY(0);
+	  layout_blue.setY(0);*/
 	}
 	
 	private void changeLayoutDialoge()
@@ -596,6 +596,7 @@ public class MainActivity extends Activity implements OnClickListener
 	@SuppressLint("NewApi")
 	private void changeLayout()
 	{ 
+		/*
   	  float red_x = layout_red.getX();
 	  float red_y = layout_red.getY();
 	  float blue_x = layout_blue.getX();
@@ -606,7 +607,7 @@ public class MainActivity extends Activity implements OnClickListener
 	  layout_blue.setX(red_x);
       layout_blue.setY(red_y);
       
-      switched = true;
+      switched = true;*/
 	}
 	
 	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
